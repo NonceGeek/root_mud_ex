@@ -1,10 +1,8 @@
 ![Elixir CI Status](https://github.com/oestrich/kalevala/workflows/Elixir%20CI/badge.svg)
 
-# Kalevala
+# Web3MudEx
 
-![Kalevala logo](kalevala.png)
-
-Kalevala is a world building toolkit for text based games, written in Elixir.
+Web3MudEx is a MUD Framework based on Web3 & AIGC, written in Elixir, based from [`Kalevala`](https://github.com/oestrich/kalevala)
 
 ## Example Game
 
@@ -25,7 +23,7 @@ mix run --no-halt
 
 A telnet listener will start on port `4444` and a TLS listener will start on port `4443` with a self signed cert. A web client will start on port `4500`, visit `http://localhost:4500/` to view it in your browser.
 
-## Components of Kalevala
+## Components of Web3MudEx
 
 ### Foreman
 
