@@ -2,7 +2,7 @@
 
 # Web3MudEx
 
-Web3MudEx is a MUD Framework based on Web3 & AIGC, written in Elixir, based from [`Kalevala`](https://github.com/oestrich/kalevala)
+Web3MudEx is a MUD Framework based on Web3 & AIGC, written in Elixir, forked from [`Kalevala`](https://github.com/oestrich/kalevala).
 
 ## Example Game
 
