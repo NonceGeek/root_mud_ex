@@ -1,0 +1,2 @@
+msgid "Web3MUDEx"
+msgstr "Web3MUDEx"

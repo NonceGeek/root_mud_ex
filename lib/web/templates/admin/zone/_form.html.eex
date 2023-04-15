@@ -1,0 +1,12 @@
+<%= form_for(@changeset, @url, fn f -> %>
+  <%= FormView.text_field(f, :key) %>
+
+  <%= FormView.text_field(f, :name) %>
+
+  <%= FormView.textarea_field(f, :description, rows: 5) %>
+
+  <div class="input-group">
+    <div></div>
+    <%= submit(@submit, class: "btn-primary") %>
+  </div>
+<% end) %>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= gettext("Web3MUDEx") %></title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+
+    <meta property="og:site_name" content="<%= gettext("Web3MUDEx") %>" />
+
+    <%= if Map.has_key?(assigns, :open_graph_title) do %>
+      <meta property="og:title" content="<%= @open_graph_title %>" />
+    <% end %>
+
+    <%= if Map.has_key?(assigns, :open_graph_description) do %>
+      <meta property="og:description" content="<%= @open_graph_description %>" />
+    <% end %>
+
+    <%= if Map.has_key?(assigns, :open_graph_url) do %>
+      <meta property="og:url" content="<%= @open_graph_url %>" />
+    <% end %>
+
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body class="bg-gray-100 admin">
+    <div class="md:w-full md:z-20 flex flex-row flex-wrap items-center bg-white px-5 py-2 border-b border-purple-400">
+      <div class="w-56 flex flex-row items-center">
+        <%= link(to: Routes.admin_dashboard_path(@conn, :index), class: "flex-1 font-bold") do %>
+          <%= img_tag(Routes.static_path(@conn, "/images/exventure.png"), class: "h-8 inline-block") %>
+          <span class="ml-1 inline-block text-purple-900">Web3MUDEx</span>
+        <% end %>
+      </div>
+
+      <div class="flex-grow flex justify-end items-center">
+        <span class="inline-block mx-2"><%= @current_user.email %></span>
+        <%= link(to: Routes.session_path(@conn, :delete), class: "btn-secondary text-sm", method: :delete) do %>
+          Sign Out
+        <% end %>
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row md:min-h-screen w-full">
+      <div class="flex flex-col w-full md:w-64 text-gray-700 bg-gray-800 border-r border-purple-400 flex-shrink-0">
+        <nav class="flex-grow md:block md:overflow-y-auto">
+          <%= link(to: Routes.admin_dashboard_path(@conn, :index), class: tab_active?(@active_tab, :dashboard)) do %>
+            <i class="fas fa-tachometer-alt mr-4"></i> Dashboard
+          <% end %>
+          <%= link(to: Routes.page_path(@conn, :index), target: "_blank") do %>
+            <i class="fas fa-home mr-4"></i> Home Page &raquo;
+          <% end %>
+          <span class="block px-2 py-1 text-gray-200 text-sm border-t border-gray-500">System</span>
+          <%= link(to: Routes.admin_staged_change_path(@conn, :index), class: tab_active?(@active_tab, :staged_changes)) do %>
+            <i class="fas fa-exchange-alt mr-4"></i> Staged Changes
+          <% end %>
+          <%= link(to: Routes.admin_user_path(@conn, :index), class: tab_active?(@active_tab, :users)) do %>
+            <i class="fas fa-users mr-4"></i> Users
+          <% end %>
+          <span class="block px-2 py-1 text-gray-200 text-sm border-t border-gray-500">The World</span>
+          <%= link(to: Routes.admin_zone_path(@conn, :index), class: tab_active?(@active_tab, :zones)) do %>
+            <i class="fas fa-flag mr-4"></i> Zones
+          <% end %>
+          <%= link(to: Routes.admin_room_path(@conn, :index), class: tab_active?(@active_tab, :rooms)) do %>
+            <i class="fas fa-building mr-4"></i> Rooms
+          <% end %>
+        </nav>
+      </div>
+
+      <main class="w-full xxl:w-3/5 xxl:mx-auto xl:w-3/4 xl:mx-auto md:m-4 p-4">
+        <%= if info = get_flash(@conn, :info) do %>
+          <div class="bg-blue-100 border-l-4 border-blue-400 p-4 mb-4">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <i class="fas fa-check-circle text-blue-400"></i>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-blue-700"><%= info %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <%= if error = get_flash(@conn, :error) do %>
+          <div class="bg-red-100 border-l-4 border-red-400 p-4 mb-4">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <i class="fas fa-exclamation-triangle text-red-400"></i>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-red-700"><%= error %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <%= @inner_content %>
+      </main>
+    </div>
+
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>

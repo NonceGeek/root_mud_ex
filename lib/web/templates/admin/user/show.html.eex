@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h1 class="text-xl font-bold">
+    <%= link("Users", to: Routes.admin_user_path(@conn, :index)) %> &raquo;
+    <%= @user.username %>
+  </h1>
+</div>
+
+<div class="panel">
+  <div class="panel-container">
+    <h2 class="text-lg">
+      Attributes
+    </h2>
+
+    <table class="table attributes">
+      <tbody>
+        <tr>
+          <th>Username</th>
+          <td><%= @user.username %></td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td><%= @user.email %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

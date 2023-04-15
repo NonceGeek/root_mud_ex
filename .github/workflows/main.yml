@@ -1,0 +1,113 @@
+name: Main
+on: push
+jobs:
+  elixir:
+    runs-on: ubuntu-20.04
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_DB: ex_venture_test
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-elixir@v1.5.0
+      with:
+        experimental-otp: true
+        otp-version: "23.1.2"
+        elixir-version: "1.11.2"
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y git build-essential
+    - name: Cache build
+      uses: actions/cache@v2
+      with:
+        path: |
+          deps
+          _build
+        key: ${{ runner.os }}-mix-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+        restore-keys: |
+          ${{ runner.os }}-mix-
+    - name: Setup elixir
+      run: |
+        mix deps.get
+        mix compile
+      env:
+        MIX_ENV: test
+    - name: Verify application
+      run: |
+        mix format --check-formatted
+        mix compile --force --warnings-as-errors
+        mix credo
+        mix test
+      env:
+        MIX_ENV: test
+
+  javascript:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+        working-directory: assets
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-v2-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-node-v2-
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y git build-essential
+    - name: Setup node
+      run: |
+        npm install -g yarn
+        yarn install
+    - name: Verify application
+      run: |
+        yarn lint:ci
+        yarn jest
+
+  docker:
+    runs-on: ubuntu-20.04
+    needs: [elixir, javascript]
+    if: github.ref == 'refs/heads/kalevala'
+    steps:
+    - uses: actions/checkout@v1
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+    - name: Cache Docker layers
+      uses: actions/cache@v2
+      with:
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-buildx-deploy-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-buildx-deploy-
+    - name: Build and push
+      uses: docker/build-push-action@v2
+      with:
+        context: ./
+        file: ./Dockerfile
+        push: true
+        tags: oestrich/exventure:${{ github.sha }}
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache

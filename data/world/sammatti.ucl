@@ -1,0 +1,243 @@
+zones "noncegeek" {
+  name = "NonceGeekDAO"
+}
+
+rooms "noncegeek_center" {
+  name = "NonceGeekDAO Center"
+  description = "You are in the NonceGeekDAO Center."
+
+  map_icon = "wooden-sign"
+
+  x = 0
+  y = 0
+  z = 0
+
+  features = [
+    {
+      keyword = "web3_move_ex"
+      short = "To the east is web3_move_ex, a MOVE sdk coding by elixir."
+      long = "To the east is web3_move_ex, a MOVE sdk coding by elixir."
+    },
+    {
+      keyword = "tai_shang_micro_faas_system"
+      short = "To the west is tai_shang_micro_faas_system, Function as a Service based on Web3."
+      long = "To the west is tai_shang_micro_faas_system, Function as a Service based on Web3."
+    }
+  ]
+}
+
+room_exits "noncegeek_center" {
+  room_id = rooms.noncegeek_center.id
+
+  north = rooms.move_did.id
+  east = rooms.web3_move_ex.id
+  west = rooms.tai_shang_micro_faas_system.id
+
+  south = "kissa-jarvi.rooms.gates.id"
+}
+
+room_characters "noncegeek_center" {
+  room_id = rooms.noncegeek_center.id
+
+  characters = [
+    {
+      id = characters.town_crier.id
+    },
+    {
+      id = characters.wandering_villager.id
+    }
+  ]
+}
+
+room_items "noncegeek_center" {
+  room_id = rooms.noncegeek_center.id
+
+  items = [
+    {
+      id = global.items.longsword.id
+    },
+    {
+      id = global.items.potion.id
+    },
+    {
+      id = global.items.airdropper.id
+    }
+  ]
+}
+
+rooms "move_did" {
+  name = "MoveDID"
+  description = "DID Solution In Move."
+
+  map_icon = "shop"
+
+  x = 0
+  y = 1
+  z = 0
+}
+
+room_exits "move_did" {
+  room_id = rooms.move_did.id
+  south = rooms.noncegeek_center.id
+}
+
+rooms "web3_move_ex" {
+  name = "web3_move_ex"
+  description = "MOVE sdk coding by elixir."
+
+  map_color = "yellow"
+  map_icon = "stein"
+
+  x = 1
+  y = 0
+  z = 0
+}
+
+rooms "web3_mud_ex" {
+  name = "web3_mud_ex"
+  description = "Web3MudEx is a MUD Framework based on Web3 & AIGC, written in Elixir, forked from Kalevala."
+
+  map_color = "green"
+  map_icon = "pine-tree"
+
+  x = 2
+  y = 0
+  z = 0
+}
+
+room_exits "web3_move_ex" {
+  room_id = rooms.web3_move_ex.id
+
+  west = rooms.noncegeek_center.id
+  north = rooms.well.id
+  east = rooms.web3_mud_ex.id
+  up = rooms.web3_move_ex_upstairs.id
+}
+
+room_exits "web3_mud_ex" {
+  room_id = rooms.web3_mud_ex.id
+
+  west = rooms.web3_move_ex.id
+}
+
+room_characters "web3_move_ex" {
+  room_id = rooms.web3_move_ex.id
+
+  characters = [
+    {
+      id = characters.villager.id
+      name = "Tapio"
+    }
+  ]
+}
+
+rooms "web3_move_ex_upstairs" {
+  name = "Lohikäärme Upstairs"
+  description = "The upstairs of the small web3_move_ex. A small staircase leads downstairs."
+
+  x = 1
+  y = 0
+  z = 1
+}
+
+room_exits "web3_move_ex_upstairs" {
+  room_id = rooms.web3_move_ex_upstairs.id
+
+  down = rooms.web3_move_ex.id
+}
+
+rooms "well" {
+  name = "move_e2e_test_tool"
+  description = "E2E test tool for Move Language."
+
+  map_color = "green"
+  map_icon = "well"
+
+  x = 1
+  y = 1
+  z = 0
+
+  features = [
+    {
+      keyword = "well"
+      short = "A well with a bucket dangling is off to the side of the road in this part of town."
+      long = "A well with a bucket dangling is off to the side of the road in this part of town."
+    }
+  ]
+}
+
+room_exits "well" {
+  room_id = rooms.well.id
+  south = rooms.web3_move_ex.id
+}
+
+rooms "tai_shang_micro_faas_system" {
+  name = "tai_shang_micro_faas_system"
+  description = "Function as a Service based on Web3."
+
+  map_color = "yellow"
+  map_icon = "hammer"
+
+  x = -1
+  y = 0
+  z = 0
+}
+
+room_exits "tai_shang_micro_faas_system" {
+  room_id = rooms.tai_shang_micro_faas_system.id
+
+  east = rooms.noncegeek_center.id
+}
+
+room_characters "tai_shang_micro_faas_system" {
+  room_id = rooms.tai_shang_micro_faas_system.id
+
+  characters = [
+    {
+      id = characters.villager.id
+      name = "Anni"
+    }
+  ]
+}
+
+characters "town_crier" {
+  name = "Leeduckgo"
+  description = "Cool-oriented programming."
+
+  initial_events = [
+    {
+      topic = "characters/emote"
+      delay = 3000
+      data = {
+        id = "looking"
+        message = "looks around for someone to talk to."
+      }
+    }
+  ]
+
+  brain = brains.town_crier
+}
+
+characters "villager" {
+  name = "Villager"
+  description = "A villager of noncegeek."
+
+  brain = brains.villager
+}
+
+characters "wandering_villager" {
+  name = "Villager"
+  description = "A villager of noncegeek."
+
+  initial_events = [
+    {
+      topic = "characters/move"
+      delay = 5000
+      data = {
+        id = "wander"
+      }
+    }
+  ]
+
+  brain = brains.wandering_villager
+}

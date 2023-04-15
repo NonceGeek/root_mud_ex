@@ -1,0 +1,415 @@
+@tailwind base;
+
+@tailwind components;
+
+html, body {
+  @apply h-full;
+}
+
+iframe {
+  display: none;
+}
+
+.btn-primary {
+  @apply inline-flex items-center px-2.5 py-1.5 border border-transparent font-medium rounded-md shadow-sm text-white bg-blue-600;
+
+  &:focus {
+    @apply outline-none ring-2 ring-offset-2 ring-blue-500;
+  }
+
+  &:hover {
+    @apply bg-blue-700;
+  }
+}
+
+.btn-secondary {
+  @apply inline-flex items-center px-2.5 py-1.5 border border-transparent font-medium rounded-md text-blue-700 bg-blue-100 ;
+
+  &:focus {
+    @apply outline-none ring-2 ring-offset-2 ring-indigo-500;
+  }
+
+  &:hover {
+    @apply bg-blue-200;
+  }
+}
+
+.btn-inactive {
+  @apply bg-gray-500 text-white font-bold py-2 px-4 rounded;
+
+  &:focus {
+    @apply outline-none ring;
+  }
+
+  &:hover {
+    @apply bg-gray-700;
+  }
+}
+
+nav .link {
+  @apply inline-block text-white no-underline py-2 px-2;
+
+  &:hover {
+    @apply text-gray-200;
+  }
+}
+
+.form {
+  @apply bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4;
+}
+
+.label {
+  @apply block text-gray-700 text-sm font-bold mb-2;
+}
+
+.input {
+  @apply appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 sm:text-sm;
+
+  &:focus {
+    @apply outline-none ring-blue-500 border-blue-500;
+  }
+}
+
+.input:focus {
+  @apply outline-none ring;
+}
+
+.input-group {
+  @apply mb-6;
+
+  &.error {
+    .label {
+      @apply text-red-700;
+    }
+
+    .input {
+      @apply border-red-700;
+    }
+
+    .help-block {
+      @apply text-red-700;
+    }
+  }
+}
+
+@screen md {
+  .input-group {
+    @apply flex;
+
+    > *:first-child {
+      @apply w-1/3;
+    }
+
+    > *:nth-child(2) {
+      @apply w-2/3;
+    }
+  }
+}
+
+.tooltip {
+  @apply absolute hidden mt-1 z-50 bg-black text-white text-sm rounded py-1 px-4 opacity-75 border-solid border border-gray-600;
+}
+
+.tooltip-hover {
+  &.right .tooltip {
+    @apply right-0;
+  }
+
+  &:hover .tooltip {
+    @apply block;
+  }
+}
+
+.admin {
+  .btn-primary {
+    @apply bg-purple-600 text-white flex justify-center;
+
+    &:focus {
+      @apply ring-purple-500;
+    }
+
+    &:hover {
+      @apply bg-purple-700;
+    }
+  }
+
+  @screen md {
+    .btn-primary {
+      @apply px-4;
+    }
+
+    .btn-secondary {
+      @apply px-4;
+    }
+  }
+
+  .btn-secondary {
+    @apply bg-purple-200;
+
+    &:focus {
+      @apply ring-purple-500;
+    }
+
+    &:hover {
+      @apply bg-purple-400;
+    }
+  }
+
+  .input {
+    &:focus {
+      @apply ring-purple-500 border-purple-500;
+    }
+
+  }
+
+  [type="radio"] {
+    @apply text-purple-500;
+
+    &:focus {
+      @apply ring-purple-500 border-purple-500;
+    }
+  }
+
+  a {
+    @apply text-purple-700;
+  }
+
+  nav a {
+    @apply block px-2 py-3 text-white bg-gray-700 border-l-4 border-gray-700;
+  }
+
+  nav a:hover {
+    @apply bg-gray-800 border-gray-800;
+  }
+
+  nav a.active {
+    @apply bg-gray-800 border-purple-400;
+  }
+
+  .page-header {
+    @apply flex flex-row items-center h-12;
+  }
+
+  .actions {
+    @apply flex-grow flex justify-end space-x-2;
+  }
+
+  .panel {
+    @apply border-t-2 border-purple-600 rounded mt-2;
+  }
+
+  .panel-container {
+    @apply border border-gray-200 p-2 bg-white;
+  }
+
+  .table {
+    @apply table-fixed w-full mt-2;
+
+    th {
+      @apply px-4 py-2;
+    }
+
+    td {
+      @apply px-4 py-2;
+    }
+  }
+
+  .attributes {
+    th {
+      @apply w-64;
+    }
+  }
+
+  .pagination {
+    @apply bg-white px-4 py-3 flex justify-end border-t border-gray-200 sm:px-6;
+  }
+
+  .page-link {
+    @apply relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700;
+
+    &.active {
+      @apply text-purple-400;
+    }
+
+    &.disabled {
+      @apply text-gray-300;
+    }
+  }
+
+  .terminal {
+    @apply bg-gray-900 text-gray-500 p-4 my-2 font-mono;
+  }
+}
+
+@tailwind utilities;
+
+.blink {
+  animation: 2s linear infinite blink_effect;
+}
+
+@keyframes blink_effect {
+  0% {
+    visibility: hidden;
+  }
+
+  50% {
+    visibility: hidden;
+  }
+
+  100% {
+    visibility: visible;
+  }
+}
+
+div::-webkit-scrollbar {
+  display: none;
+}
+
+div {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@import "colors";
+
+.admin {
+  .icon {
+    @apply bg-gray-500 border-2 border-gray-600;
+
+    .map-icon {
+      @apply text-gray-900;
+    }
+
+    &.blue {
+      @apply bg-blue-500 border-blue-600;
+
+      .map-icon {
+        @apply text-gray-100;
+      }
+    }
+
+    &.brown {
+      @apply bg-yellow-800 border-yellow-900;
+
+      .map-icon {
+        @apply text-gray-100;
+      }
+    }
+
+    &.green {
+      @apply bg-green-500 border-green-600;
+
+      .map-icon {
+        @apply text-gray-800;
+      }
+    }
+
+    &.yellow {
+      @apply bg-yellow-500 border-yellow-600;
+
+      .map-icon {
+        @apply text-gray-800;
+      }
+    }
+  }
+}
+
+.map {
+  background: #1a202c;
+  border-radius: 10px;
+  display: inline-block;
+  height: 310px;
+  width: 310px;
+}
+
+@mixin map-color($fill, $stroke, $strokeActive) {
+  fill: $fill;
+  stroke: $stroke;
+
+  &:hover {
+    stroke: $strokeActive;
+  }
+
+  &.active {
+    stroke: $strokeActive;
+  }
+}
+
+@mixin map-exit($fill, $stroke) {
+  rect {
+    fill: $fill;
+  }
+
+  polyline {
+    stroke: $stroke;
+  }
+}
+
+.cell {
+  stroke-width: 2;
+
+  @include map-color($gray-500, $gray-600, $gray-100);
+
+  .icon {
+    fill: $gray-900;
+  }
+
+  &.blue {
+    @include map-color($blue-500, $blue-600, $blue-100);
+
+    .icon {
+      fill: $gray-100;
+    }
+  }
+
+  &.brown {
+    @include map-color($yellow-800, $yellow-900, $yellow-600);
+
+    .icon {
+      fill: $gray-100;
+    }
+  }
+
+  &.green {
+    @include map-color($green-500, $green-600, $green-100);
+
+    .icon {
+      fill: $gray-800;
+    }
+  }
+
+  &.yellow {
+    @include map-color($yellow-500, $yellow-600, $yellow-100);
+
+    .icon {
+      fill: $gray-800;
+    }
+  }
+}
+
+.cell-exit {
+  rect {
+    fill: $gray-500;
+  }
+
+  polyline {
+    stroke: $gray-600;
+    stroke-width: 2;
+  }
+
+  &.blue {
+    @include map-exit($blue-500, $blue-600);
+  }
+
+  &.brown {
+    @include map-exit($yellow-800, $yellow-900);
+  }
+
+  &.green {
+    @include map-exit($green-500, $green-600);
+  }
+
+  &.yellow {
+    @include map-exit($yellow-500, $yellow-600);
+  }
+}

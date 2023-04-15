@@ -1,35 +1,34 @@
-FROM hexpm/elixir:1.10.4-erlang-23.1-alpine-3.12.0 as builder
-WORKDIR /app/example
-ENV MIX_ENV=prod
+FROM hexpm/elixir:1.11.1-erlang-23.0.2-alpine-3.12.1 as builder
+
 RUN apk add --no-cache gcc git make musl-dev
 RUN mix local.rebar --force && mix local.hex --force
+WORKDIR /app
+ENV MIX_ENV=prod
 COPY mix.* /app/
-COPY example/mix.* /app/example/
 RUN mix deps.get --only prod
 RUN mix deps.compile
 
-FROM node:12.16 as frontend
+FROM node:12.18 as frontend
 WORKDIR /app
-COPY example/assets/package.json example/assets/yarn.lock /app/
+COPY assets/package.json assets/yarn.lock /app/
 RUN yarn install
-COPY example/assets /app
-RUN yarn run deploy
+COPY assets /app
+RUN yarn run deploy:js && \
+  yarn run deploy:css && \
+  yarn run deploy:static
 
 FROM builder as releaser
-WORKDIR /app/example
-ENV MIX_ENV=prod
-COPY --from=frontend /priv/static /app/example/priv/static
+COPY --from=frontend /priv/static /app/priv/static
 COPY . /app/
+RUN mix phx.digest
 RUN mix release
 
-FROM alpine:3.12.0
-ENV LANG=C.UTF-8
-RUN apk add -U bash openssl
+FROM alpine:3.12
+RUN apk add --no-cache bash openssl
 WORKDIR /app
-COPY --from=releaser /app/example/_build/prod/rel/kantele /app/
-COPY example/data /app/data
-EXPOSE 4443
-EXPOSE 4444
-EXPOSE 4500
-ENTRYPOINT ["bin/kantele"]
+COPY --from=releaser /app/_build/prod/rel/web3_mud_ex /app/
+COPY --from=releaser /app/data /app/data/
+ENV MIX_ENV=prod
+EXPOSE 4000
+ENTRYPOINT ["bin/web3_mud_ex"]
 CMD ["start"]

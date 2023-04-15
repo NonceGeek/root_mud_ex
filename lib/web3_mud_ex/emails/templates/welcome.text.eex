@@ -1,0 +1,5 @@
+Welcome to <%= gettext("Web3MUDEx") %>!
+
+Please verify your email, copy the link below.
+
+<%= @confirm_url %>

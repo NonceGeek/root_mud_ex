@@ -1,9 +1,0 @@
-image:
-  repository: grapevinehaus/kantele
-  # tag:
-  pullPolicy: Always
-
-# web:
-#   host:
-
-resources: {}

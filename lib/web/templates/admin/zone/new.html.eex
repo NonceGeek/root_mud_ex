@@ -1,0 +1,12 @@
+<div class="page-header">
+  <h1 class="text-xl font-bold">
+    <%= link("Zones", to: Routes.admin_zone_path(@conn, :index), class: "text-blue-700") %> &raquo;
+    New Zone
+  </h1>
+</div>
+
+<div class="panel">
+  <div class="panel-container">
+    <%= render("_form.html", changeset: @changeset, url: Routes.admin_zone_path(@conn, :create), submit: "Create") %>
+  </div>
+</div>

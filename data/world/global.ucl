@@ -1,0 +1,123 @@
+seed = false
+
+zones "global" {
+  name = "Global Resources"
+  description = "Resources that are used across multiple zones"
+}
+
+# Weapons
+
+items "axe" {
+  name = "Axe"
+  description = "A single bladed axe with a long metal handle."
+
+  verbs = [
+    "drop",
+    # "equip",
+    "get"
+    # "look",
+    # "steal",
+    # "remove"
+  ]
+}
+
+items "club" {
+  name = "Club"
+  description = "A large piece of wood, maybe a branch."
+
+  verbs = [
+    "drop",
+    # "equip",
+    "get"
+    # "look",
+    # "steal",
+    # "remove"
+  ]
+}
+
+items "dagger" {
+  name = "Dagger"
+  description = "A small curved dagger."
+
+  verbs = [
+    "drop",
+    # "equip",
+    "get"
+    # "look",
+    # "steal",
+    # "remove"
+  ]
+}
+
+items "longsword" {
+  name = "Longsword"
+  description = "A dual edged sword, with a silver hilt."
+
+  verbs = [
+    "drop",
+    # "equip",
+    "get"
+    # "look",
+    # "steal",
+    # "remove"
+  ]
+}
+
+# Healing
+
+items "potion" {
+  name = "Healing Potion"
+  description = "A potion to heal what ails you."
+
+  verbs = [
+    "drop",
+    "get"
+    # "look",
+    # "quaff",
+    # "steal"
+  ]
+}
+
+items "airdropper" {
+  name = "Airdropper"
+  description = "Airdropper Coins to Repo Contributors."
+
+  verbs = [
+    "drop",
+    "get",
+    "contract"
+  ]
+}
+
+items "crowdfund" {
+  name = "Crowdfund"
+  description = "Crowdfund this Repo."
+
+  verbs = [
+    "drop",
+    "get",
+    "contract"
+  ]
+}
+
+items "genreadme" {
+  name = "GenerateReadme"
+  description = "Generate Web3 Readme for this Project."
+
+  verbs = [
+    "drop",
+    "get",
+    "contract"
+  ]
+}
+
+items "bountychecker" {
+  name = "BountyChecker"
+  description = "Check the bounties of this dao."
+
+  verbs = [
+    "drop",
+    "get",
+    "contract"
+  ]
+}

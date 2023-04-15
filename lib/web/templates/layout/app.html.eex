@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title><%= gettext("Web3MUDEx") %></title>
+
+    <%= render("_icons.html") %>
+    <%= render("_social.html") %>
+
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+  </head>
+  <body class="bg-gray-300 font-sans leading-normal tracking-normal">
+    <nav class="bg-blue-600 p-2 mt-0 fixed w-full z-10 top-0">
+      <div class="container mx-auto flex flex-wrap items-center">
+        <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+          <%= link(to: Routes.page_path(@conn, :index), class: "text-white no-underline hover:text-white hover:no-underline") do %>
+            <span class="text-2xl pl-2"><%= gettext("Web3MUDEx") %></span>
+          <% end %>
+        </div>
+
+        <div class="flex w-full content-center justify-between md:w-1/2 md:justify-end">
+          <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+            <%= if Map.has_key?(assigns, :current_user) do %>
+              <li class="mr-3">
+                <%= link("Play", to: Routes.page_path(@conn, :client), class: "inline-block text-white no-underline px-4 py-2 leading-none border rounded border-white hover:border-transparent hover:text-blue-600 hover:bg-white") %>
+              </li>
+              <li class="mr-3">
+                <%= link("Profile", to: Routes.profile_path(@conn, :show), class: "link") %>
+              </li>
+              <%= if admin?(@current_user) do %>
+                <li class="mr-3">
+                  <%= link("Admin", to: Routes.admin_dashboard_path(@conn, :index), class: "link") %>
+                </li>
+              <% end %>
+              <li class="mr-3">
+                <%= link("Sign Out", to: Routes.session_path(@conn, :delete), method: :delete, class: "link") %>
+              </li>
+            <% else %>
+              <li class="mr-3">
+                <%= link("Register", to: Routes.registration_path(@conn, :new), class: "link") %>
+              </li>
+              <li class="mr-3">
+                <%= link("Sign In", to: Routes.session_path(@conn, :new), class: "link") %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mx-auto mt-24 md:mt-16 h-screen">
+      <%= if get_flash(@conn, :info) do %>
+        <div class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative mb-4" role="alert">
+          <strong class="block sm:inline"><%= get_flash(@conn, :info) %></strong>
+        </div>
+      <% end %>
+
+      <%= if get_flash(@conn, :error) do %>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+          <strong class="block sm:inline"><%= get_flash(@conn, :error) %></strong>
+        </div>
+      <% end %>
+
+      <%= @inner_content %>
+    </div>
+
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>

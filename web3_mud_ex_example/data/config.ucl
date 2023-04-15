@@ -1,3 +1,0 @@
-player {
-  starting_room_id = nonce_geek_club.rooms.club.id
-}

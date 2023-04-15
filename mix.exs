@@ -1,58 +1,91 @@
-defmodule Kalevala.MixProject do
+defmodule Web3MUDEx.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :kalevala,
+      app: :web3_mud_ex,
       version: "0.1.0",
-      elixir: "~> 1.10",
+      elixir: "~> 1.5",
+      elixirc_paths: elixirc_paths(Mix.env()),
+      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
+      aliases: aliases(),
       deps: deps(),
-      description: description(),
-      package: package(),
-      source_url: "https://github.com/oestrich/kalevala",
+
+      # Docs
+      name: "Web3MUDEx",
+      source_url: "https://github.com/oestrich/web3_mud_ex",
+      homepage_url: "https://exventure.org",
       docs: [
         main: "readme",
+        logo: "assets/static/images/exventure.png",
         extras: ["README.md"]
       ]
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
+  # Configuration for the OTP application.
+  #
+  # Type `mix help compile.app` for more information.
   def application do
     [
-      extra_applications: [:logger],
-      mod: {Kalevala.Application, []}
+      mod: {Web3MUDEx.Application, []},
+      extra_applications: [:iex, :logger, :runtime_tools]
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
+  # Specifies which paths to compile per environment.
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
+
+  # Specifies your project dependencies.
+  #
+  # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:benchee, "~> 1.0", only: :dev},
-      {:credo, "~> 1.2", only: [:dev, :test], runtime: false},
-      {:ex_doc, "~> 0.21", only: :dev, runtime: false},
-      {:nimble_parsec, "~> 1.0"},
-      {:plug_cowboy, "~> 2.2", optional: true},
-      {:ranch, "~> 1.7", optional: true},
-      {:telemetry, "~> 0.4.1"},
-      {:telnet, "~> 0.1"}
+      {:bamboo, "~> 2.0"},
+      {:bamboo_phoenix, "~> 1.0.0"},
+      {:credo, "~> 1.1", only: [:dev, :test]},
+      {:ecto_sql, "~> 3.1"},
+      {:elias, "~> 0.2"},
+      {:ex_doc, "~> 0.23", only: :dev, runtime: false},
+      {:gettext, "~> 0.11"},
+      {:jason, "~> 1.0"},
+      {:kalevala, "~> 0.1"},
+      {:logster, "~> 1.0"},
+      {:phoenix, "~> 1.5"},
+      {:phoenix_ecto, "~> 4.0"},
+      {:phoenix_html, "~> 2.11"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_pubsub, "~> 2.0"},
+      {:plug_cowboy, "~> 2.2"},
+      {:porcelain, "~> 2.0"},
+      {:postgrex, ">= 0.0.0"},
+      {:stein, "~> 0.5"},
+      {:stein_storage, git: "https://github.com/smartlogic/stein_storage.git", branch: "main"},
+      {:telemetry_metrics, "~> 0.4"},
+      {:telemetry_poller, "~> 0.4"},
+      {:vapor, "~> 0.10.0"},
+
+      {:nimble_parsec, "~> 1.2", override: true},
+      {:ecto, "~> 3.4.6", override: true},
+      {:rename_project, "~> 0.1.0", only: :dev},
+      {:web3_move_ex, "~> 0.6.1"},
     ]
   end
 
-  defp description() do
-    """
-    Kalevala is a world building toolkit for text based games.
-    """
-  end
-
-  defp package() do
+  # Aliases are shortcuts or tasks specific to the current project.
+  # For example, to create, migrate and run the seeds file at once:
+  #
+  #     $ mix ecto.setup
+  #
+  # See the documentation for `Mix` for more info on aliases.
+  defp aliases do
     [
-      maintainers: ["Eric Oestrich"],
-      licenses: ["MIT"],
-      links: %{
-        "GitHub" => "https://github.com/oestrich/kalevala"
-      }
+      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "ecto.migrate.reset": ["ecto.drop", "ecto.create", "ecto.migrate"],
+      test: ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
   end
 end
