@@ -24,4 +24,4 @@
 
   Airdrop Coins to Github Contributors.
 
-  // TODO.
+  [0x7d12e10ef578e047e73a45b2949dffe3475997f2e5efc0beb10a2e51df16dce7](https://explorer.sui.io/object/0x7d12e10ef578e047e73a45b2949dffe3475997f2e5efc0beb10a2e51df16dce7?network=devnet)
