@@ -1,12 +1,9 @@
 # Web3MUDEx
 
-![Main](https://github.com/oestrich/web3_mud_ex/workflows/Main/badge.svg)
 [![Discord](https://img.shields.io/badge/chat-discord-7289da.svg)][discord]
 [![Patreon](https://img.shields.io/badge/support-patreon-F96854.svg)](https://www.patreon.com/ericoestrich)
 
 > **NOTE** This branch is the complete rewrite of Web3MUDEx using [Kalevala](https://github.com/oestrich/kalevala) under the hood. Everything from the previous codebase is tossed out to start over again. If you're interested in something that's working _now_, please check out the [main](https://github.com/oestrich/web3_mud_ex/tree/main) branch.
-
-<img src="https://raw.githubusercontent.com/oestrich/web3_mud_ex/main/docs/images/exventure.png" alt="Web3MUDEx Logo" width="200" />
 
 A web3 MUD Framework based on Sui Netowork, gen MUD Space by Github Organiazation automatically, forked from `ex_venture`.
 
