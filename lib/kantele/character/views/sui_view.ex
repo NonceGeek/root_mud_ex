@@ -30,7 +30,6 @@ defmodule NonceGeekDAO.Character.SuiView do
     end
 
     def render("getcontributors", _) do
-      IO.puts "ddddd"
       %EventText{
         topic: "Character.Info",
         data: "web3_move_ex",
@@ -56,6 +55,17 @@ defmodule NonceGeekDAO.Character.SuiView do
       }
     end
 
+    def render("airdrop", %{coin_num: coin_num}) do
+      IO.puts coin_num
+      %EventText{
+        topic: "Character.Info",
+        data: "web3_move_ex",
+        text: ~i"""
+          Airdropped #{coin_num} Sui /per Contributor for this Room(Repo)!
+        """
+      }
+    end
+
     def render("_getobj",  obj_id) do
 
       {:ok, client} =
@@ -64,7 +74,6 @@ defmodule NonceGeekDAO.Character.SuiView do
       {:ok, obj} =
         Web3MoveEx.Sui.get_object(client, obj_id)
       %{data: %{content: %{fields: fields, type: type}, owner: owner}} = obj
-      IO.puts inspect obj
       ~i"""
         Fields: #{inspect(fields)}
         Types: #{inspect(type)}
@@ -73,7 +82,6 @@ defmodule NonceGeekDAO.Character.SuiView do
     end
 
     def render("_getobjsbyowner",  addr) do
-      # TODO: get_obj from chain.
       {:ok, client} =
         Web3MoveEx.Sui.RPC.connect()
       {

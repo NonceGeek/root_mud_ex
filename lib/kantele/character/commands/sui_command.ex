@@ -21,8 +21,12 @@ defmodule NonceGeekDAO.Character.SuiCommand do
     render(conn, SuiView, "getobjsbyowner", %{addr: addr})
   end
 
-    def get_contributors(conn, %{"room_name" => room_name}) do
+  def get_contributors(conn, %{"room_name" => room_name}) do
     render(conn, SuiView, "getcontributors", %{room_name: room_name})
+  end
+
+  def airdrop(conn, %{"coin_num" => coin_num}) do
+    render(conn, SuiView, "airdrop", %{coin_num: coin_num})
   end
 
 end

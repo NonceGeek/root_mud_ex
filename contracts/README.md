@@ -16,7 +16,7 @@
 
   To Set Repo Information to `Sui Ojbect`.
 
-  [0x8a8608b5f7cd191465b1fd81913b59476d5bf48e53751002a11cc4b9d440383a](https://explorer.sui.io/object/0x8a8608b5f7cd191465b1fd81913b59476d5bf48e53751002a11cc4b9d440383a?network=devnet)
+  [0x08ed7c1d21fadcc92c073eca84e75e0fc3c296c9e12eaa99355eeaa9a687b714](https://explorer.sui.io/object/0x08ed7c1d21fadcc92c073eca84e75e0fc3c296c9e12eaa99355eeaa9a687b714?network=devnet)
 
 ## DAO Plugin Contracts
 

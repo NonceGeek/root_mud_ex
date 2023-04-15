@@ -19,6 +19,10 @@ defmodule NonceGeekDAO.Character.Commands do
     parse("getcontributors", :get_contributors, fn command ->
       command |> spaces() |> text(:room_name)
     end)
+
+    parse("airdrop", :airdrop, fn command ->
+      command |> spaces() |> text(:coin_num)
+    end)
   end
 
   module(ChannelCommand) do
