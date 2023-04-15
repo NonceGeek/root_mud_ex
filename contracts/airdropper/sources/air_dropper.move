@@ -47,7 +47,6 @@ module air_dropper::air_dropper{
             let receiver_address: address = vector::pop_back(&mut receivers);
             transfer::transfer(to_deliver_coin, receiver_address);
         }
-
     }
 
 }

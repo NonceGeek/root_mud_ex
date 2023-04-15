@@ -6,7 +6,11 @@
 
   To Bind Github Account with Sui Address.
 
-  [0x3c374201ba4ba3c073af51fa7278080f926af8932f4d76a118375921008956b5](https://explorer.sui.io/object/0x3c374201ba4ba3c073af51fa7278080f926af8932f4d76a118375921008956b5?network=devnet)
+  [0xef68c9d82ca470f1928e4e81e29a9bf0b1f451c02f4910933df76e8008f4fa0](https://explorer.sui.io/object/0xef68c9d82ca470f1928e4e81e29a9bf0b1f451c02f4910933df76e8008f4fa0?network=devnet)
+
+  Table of items:
+
+  [0x5f1f3e4c3ee1683b2c7103c1ea3bd9d698c38a52d79f8388a7b87f708c82a231](https://explorer.sui.io/object/0x5f1f3e4c3ee1683b2c7103c1ea3bd9d698c38a52d79f8388a7b87f708c82a231?network=devnet)
 
 * **Repo Handler**
 
