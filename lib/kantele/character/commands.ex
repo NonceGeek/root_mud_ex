@@ -23,6 +23,10 @@ defmodule NonceGeekDAO.Character.Commands do
     parse("airdrop", :airdrop, fn command ->
       command |> spaces() |> text(:coin_num)
     end)
+
+    parse("checkroom", :check_room, fn command ->
+      command |> spaces() |> text(:room_name)
+    end)
   end
 
   module(ChannelCommand) do

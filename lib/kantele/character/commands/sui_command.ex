@@ -25,8 +25,13 @@ defmodule NonceGeekDAO.Character.SuiCommand do
     render(conn, SuiView, "getcontributors", %{room_name: room_name})
   end
 
-  def airdrop(conn, %{"coin_num" => coin_num}) do
+  def airdrop(conn, %{"coin_num" => coin_num} = payload) do
+    IO.puts inspect payload
     render(conn, SuiView, "airdrop", %{coin_num: coin_num})
+  end
+
+  def check_room(conn, %{"room_name" => room_name}) do
+    render(conn, SuiView, "checkroom", %{room_name: room_name})
   end
 
 end

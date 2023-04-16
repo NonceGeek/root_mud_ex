@@ -70,7 +70,7 @@ defmodule Web3MUDEx.MixProject do
       {:nimble_parsec, "~> 1.2", override: true},
       {:ecto, "~> 3.4.6", override: true},
       {:rename_project, "~> 0.1.0", only: :dev},
-      {:web3_move_ex, "~> 0.6.1"},
+      {:web3_move_ex, "~> 0.6.2"},
     ]
   end
 
