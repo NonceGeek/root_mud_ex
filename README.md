@@ -1,8 +1,10 @@
 # RootMUDEx
 
 RootMUDEx, including 2 parts: `rootMUD Engine` & `rootMUD Creator`,
-`rootMUD Engine`: AI-based Game Engine focusing on TEXT, powered by [Movespace](https://github.com/NonceGeek/awesome-movespace).
-`rootMUD Creator`: based on `rootMUD Engine`, create MUD world for communities.
+
+* `rootMUD Engine`: AI-based Game Engine focusing on TEXT, powered by [Movespace](https://github.com/NonceGeek/awesome-movespace).
+
+* `rootMUD Creator`: based on `rootMUD Engine`, create MUD world for communities.
 > **NOTE** forked from `ex_venture`.
 
 ## Requirements
