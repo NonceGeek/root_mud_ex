@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.ReloadView do
+defmodule Kantele.Character.ReloadView do
   use Kalevala.Character.View
 
   def render("recompiled", _assigns) do

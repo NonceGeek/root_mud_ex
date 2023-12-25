@@ -1,3 +1,0 @@
-<p>Please verify your email, head on over to <%= link(gettext("Web3MUDEx"), to: @confirm_url) %> or copy the link below.</p>
-
-<code><%= @confirm_url %></code>

@@ -1,8 +1,8 @@
-defmodule NonceGeekDAO.Character.InventoryEvent do
+defmodule Kantele.Character.InventoryEvent do
   use Kalevala.Character.Event
 
-  alias NonceGeekDAO.Character.InventoryView
-  alias NonceGeekDAO.World.Items
+  alias Kantele.Character.InventoryView
+  alias Kantele.World.Items
 
   def list(conn, _params) do
     item_instances =

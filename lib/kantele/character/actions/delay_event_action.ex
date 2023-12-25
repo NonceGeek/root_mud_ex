@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.DelayEventAction do
+defmodule Kantele.Character.DelayEventAction do
   @moduledoc """
   Delay an event
   """

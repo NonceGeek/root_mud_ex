@@ -7,16 +7,16 @@
 # General application configuration
 use Mix.Config
 
-config :web3_mud_ex,
+config :ex_venture,
   namespace: Web,
-  ecto_repos: [Web3MUDEx.Repo]
+  ecto_repos: [ExVenture.Repo]
 
-config :web3_mud_ex, :listener, start: true
+config :ex_venture, :listener, start: true
 
 # Configures the endpoint
-config :web3_mud_ex, Web.Endpoint,
+config :ex_venture, Web.Endpoint,
   render_errors: [view: Web.ErrorView, accepts: ~w(html json)],
-  pubsub_server: Web3MUDEx.PubSub
+  pubsub_server: ExVenture.PubSub
 
 # Configures Elixir's Logger
 config :logger, :console,

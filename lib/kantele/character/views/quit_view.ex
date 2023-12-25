@@ -1,7 +1,7 @@
-defmodule NonceGeekDAO.Character.QuitView do
+defmodule Kantele.Character.QuitView do
   use Kalevala.Character.View
 
-  alias NonceGeekDAO.Character.CharacterView
+  alias Kantele.Character.CharacterView
 
   # passed to foreman disconnect
   def render("disconnected", %{character: character}) do

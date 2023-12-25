@@ -1,10 +1,10 @@
 defmodule Web.Endpoint do
   @moduledoc false
 
-  use Phoenix.Endpoint, otp_app: :web3_mud_ex
+  use Phoenix.Endpoint, otp_app: :ex_venture
 
-  alias Web3MUDEx.Application.KalevalaSupervisor
-  alias Web3MUDEx.Config
+  alias ExVenture.Application.KalevalaSupervisor
+  alias ExVenture.Config
 
   socket "/socket", Web.UserSocket,
     websocket: true,
@@ -16,7 +16,7 @@ defmodule Web.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :web3_mud_ex,
+    from: :ex_venture,
     gzip: false,
     only_matching: ["apple", "favicon", "android"],
     only: ~w(css fonts images js favicon.ico robots.txt manifest.json)
@@ -46,7 +46,7 @@ defmodule Web.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   plug Plug.Session,
     store: :cookie,
-    key: "_web3_mud_ex_key",
+    key: "_ex_venture_key",
     signing_salt: "76sn4b3J"
 
   if Mix.env() == :dev do
@@ -62,10 +62,10 @@ defmodule Web.Endpoint do
       handler: [
         output_processors: [
           Kalevala.Output.Tags,
-          NonceGeekDAO.Output.AdminTags,
-          NonceGeekDAO.Output.SemanticColors,
-          NonceGeekDAO.Output.Tooltips,
-          NonceGeekDAO.Output.Commands,
+          Kantele.Output.AdminTags,
+          Kantele.Output.SemanticColors,
+          Kantele.Output.Tooltips,
+          Kantele.Output.Commands,
           Kalevala.Output.Tables,
           Kalevala.Output.Websocket
         ]

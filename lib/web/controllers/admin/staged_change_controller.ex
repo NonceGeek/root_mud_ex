@@ -1,7 +1,7 @@
 defmodule Web.Admin.StagedChangeController do
   use Web, :controller
 
-  alias Web3MUDEx.StagedChanges
+  alias ExVenture.StagedChanges
 
   def index(conn, _params) do
     conn

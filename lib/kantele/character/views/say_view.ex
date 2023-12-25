@@ -1,8 +1,8 @@
-defmodule NonceGeekDAO.Character.SayView do
+defmodule Kantele.Character.SayView do
   use Kalevala.Character.View
 
   alias Kalevala.Character.Conn.EventText
-  alias NonceGeekDAO.Character.CharacterView
+  alias Kantele.Character.CharacterView
 
   def render("text", %{text: text}) do
     ~i("{text}#{text}{/text}")

@@ -1,8 +1,8 @@
-defmodule NonceGeekDAO.Character.WhoCommand do
+defmodule Kantele.Character.WhoCommand do
   use Kalevala.Character.Command
 
-  alias NonceGeekDAO.Character.WhoView
-  alias NonceGeekDAO.Character.Presence
+  alias Kantele.Character.WhoView
+  alias Kantele.Character.Presence
 
   def run(conn, _params) do
     conn

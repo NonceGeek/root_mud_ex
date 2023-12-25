@@ -1,8 +1,8 @@
 defmodule Web.ProfileController do
   use Web, :controller
 
-  alias Web3MUDEx.Characters
-  alias Web3MUDEx.Users
+  alias ExVenture.Characters
+  alias ExVenture.Users
 
   def show(conn, _params) do
     %{current_user: user} = conn.assigns

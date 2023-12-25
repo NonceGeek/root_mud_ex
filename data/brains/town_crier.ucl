@@ -32,7 +32,7 @@ brains "generic_hello" {
   ]
 }
 
-brains "town_crier_conversation" {
+brains "a_small_dog_conversation" {
   type = "conditional"
   nodes = [
     {
@@ -132,14 +132,14 @@ brains "town_crier_conversation" {
   ]
 }
 
-brains "town_crier" {
+brains "a_small_dog" {
   type = "sequence"
   nodes = [
     {
       ref = brains.generic_hello
     },
     {
-      ref = brains.town_crier_conversation
+      ref = brains.a_small_dog_conversation
     },
     {
       type = "first"
@@ -241,7 +241,7 @@ brains "town_crier" {
           data = {
             channel_name = "rooms:${room_id}"
             delay = 500
-            text = "Welcome, ${character.name}!"
+            text = "来点儿火腿肠, ${character.name}!"
           }
         }
       ]

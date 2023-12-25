@@ -1,8 +1,7 @@
-defmodule NonceGeekDAO.Character.ItemView do
+defmodule Kantele.Character.ItemView do
   use Kalevala.Character.View
 
   alias Kalevala.Character.Conn.EventText
-  alias NonceGeekDAO.World.Items
 
   def render("name", %{item_instance: item_instance} = attributes) do
     context = Map.get(attributes, :context, :none)
@@ -20,57 +19,6 @@ defmodule NonceGeekDAO.Character.ItemView do
 
   def render("name", %{item: item}) do
     ~i({item id="#{item.id}"}#{item.name}{/item})
-  end
-
-  def render("getcontract", %{item_id: "global:airdropper"}) do
-    %EventText{
-      topic: "Character.Info",
-      data: "airdropper",
-      text: ~i"""
-      {table}
-        {row}
-          {cell}Contract Info{/cell}
-        {/row}
-        {row}
-          {cell}0x7d12e10ef578e047e73a45b2949dffe3475997f2e5efc0beb10a2e51df16dce7{/cell}
-        {/row}
-      {/table}
-      """
-    }
-  end
-
-  def render("getcontract", %{item_id: "global:crowdfund"}) do
-    %EventText{
-      topic: "Character.Info",
-      data: "Crowdfund",
-      text: ~i"""
-        {table}
-          {row}
-            {cell}Contract Info{/cell}
-          {/row}
-          {row}
-            {cell}TODO{/cell}
-          {/row}
-        {/table}
-      """
-    }
-  end
-
-  def render("getcontract", %{item_id: "global:genreadme"}) do
-    %EventText{
-      topic: "Character.Info",
-      data: "GenerateReadme",
-      text: ~i"""
-        {table}
-          {row}
-            {cell}Tool Info{/cell}
-          {/row}
-          {row}
-            {cell}https://dao-system.gigalixirapp.com/readme_generator{/cell}
-          {/row}
-        {/table}
-      """
-    }
   end
 
   def render("drop-abort", %{reason: :missing_verb, item: item}) do

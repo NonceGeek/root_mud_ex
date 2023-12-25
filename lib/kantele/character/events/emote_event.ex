@@ -1,8 +1,8 @@
-defmodule NonceGeekDAO.Character.EmoteEvent do
+defmodule Kantele.Character.EmoteEvent do
   use Kalevala.Character.Event
 
-  alias NonceGeekDAO.Character.CommandView
-  alias NonceGeekDAO.Character.EmoteView
+  alias Kantele.Character.CommandView
+  alias Kantele.Character.EmoteView
 
   def interested?(event) do
     event.data.type == "emote" && match?("rooms:" <> _, event.data.channel_name)

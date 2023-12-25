@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Brain do
+defmodule Kantele.Brain do
   @moduledoc """
   Load and parse brain data into behavior tree structs
   """
@@ -47,12 +47,12 @@ defmodule NonceGeekDAO.Brain do
     }
   end
 
-  # This is `brain = brains.town_crier`
+  # This is `brain = brains.a_small_dog`
   defp parse_node("brains." <> key_path, brains) do
     parse_node(brains[key_path], brains)
   end
 
-  # A ref `{ ref = brains.town_crier }`
+  # A ref `{ ref = brains.a_small_dog }`
   defp parse_node(%{ref: "brains." <> key_path}, brains) do
     parse_node(brains[key_path], brains)
   end
@@ -92,7 +92,7 @@ defmodule NonceGeekDAO.Brain do
     %Kalevala.Brain.Condition{
       type: Kalevala.Brain.Conditions.MessageMatch,
       data: %{
-        interested?: &NonceGeekDAO.Character.SayEvent.interested?/1,
+        interested?: &Kantele.Character.SayEvent.interested?/1,
         self_trigger: data.self_trigger == "true",
         text: regex
       }
@@ -105,7 +105,7 @@ defmodule NonceGeekDAO.Brain do
     %Kalevala.Brain.Condition{
       type: Kalevala.Brain.Conditions.MessageMatch,
       data: %{
-        interested?: &NonceGeekDAO.Character.TellEvent.interested?/1,
+        interested?: &Kantele.Character.TellEvent.interested?/1,
         self_trigger: data.self_trigger == "true",
         text: regex
       }
@@ -154,7 +154,7 @@ defmodule NonceGeekDAO.Brain do
 
   def parse_action("say", action, _brains) do
     %Kalevala.Brain.Action{
-      type: NonceGeekDAO.Character.SayAction,
+      type: Kantele.Character.SayAction,
       data: action.data,
       delay: Map.get(action, :delay, 0)
     }
@@ -162,7 +162,7 @@ defmodule NonceGeekDAO.Brain do
 
   def parse_action("emote", action, _brains) do
     %Kalevala.Brain.Action{
-      type: NonceGeekDAO.Character.EmoteAction,
+      type: Kantele.Character.EmoteAction,
       data: action.data,
       delay: Map.get(action, :delay, 0)
     }
@@ -170,7 +170,7 @@ defmodule NonceGeekDAO.Brain do
 
   def parse_action("flee", action, _brains) do
     %Kalevala.Brain.Action{
-      type: NonceGeekDAO.Character.FleeAction,
+      type: Kantele.Character.FleeAction,
       data: %{},
       delay: Map.get(action, :delay, 0)
     }
@@ -178,7 +178,7 @@ defmodule NonceGeekDAO.Brain do
 
   def parse_action("wander", action, _brains) do
     %Kalevala.Brain.Action{
-      type: NonceGeekDAO.Character.WanderAction,
+      type: Kantele.Character.WanderAction,
       data: %{},
       delay: Map.get(action, :delay, 0)
     }
@@ -186,7 +186,7 @@ defmodule NonceGeekDAO.Brain do
 
   def parse_action("delay-event", action, _brains) do
     %Kalevala.Brain.Action{
-      type: NonceGeekDAO.Character.DelayEventAction,
+      type: Kantele.Character.DelayEventAction,
       data: action.data,
       delay: Map.get(action, :delay, 0)
     }

@@ -1,3 +1,3 @@
 player {
-  starting_room_id = noncegeek.rooms.noncegeek_center.id
+  starting_room_id = yuanzhengong0x01.rooms.lobby.id
 }

@@ -1,13 +1,13 @@
-defmodule Web3MUDEx.TestHelpers do
+defmodule ExVenture.TestHelpers do
   @moduledoc """
   Test Helpers for creating database records
   """
 
-  alias Web3MUDEx.APIKeys
-  alias Web3MUDEx.Repo
-  alias Web3MUDEx.Rooms
-  alias Web3MUDEx.Users
-  alias Web3MUDEx.Zones
+  alias ExVenture.APIKeys
+  alias ExVenture.Repo
+  alias ExVenture.Rooms
+  alias ExVenture.Users
+  alias ExVenture.Zones
 
   def create_api_key(params \\ %{}), do: APIKeys.create(params)
 

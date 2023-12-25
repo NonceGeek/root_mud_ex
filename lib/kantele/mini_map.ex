@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.MiniMap.Connections do
+defmodule Kantele.MiniMap.Connections do
   @moduledoc """
   Struct for tracking if a cell has a connection to another node
   """
@@ -7,7 +7,7 @@ defmodule NonceGeekDAO.MiniMap.Connections do
   defstruct [:north, :south, :east, :west, :up, :down]
 end
 
-defmodule NonceGeekDAO.MiniMap.Cell do
+defmodule Kantele.MiniMap.Cell do
   @moduledoc """
   Cell of the MiniMap
 
@@ -24,11 +24,11 @@ defmodule NonceGeekDAO.MiniMap.Cell do
     :x,
     :y,
     :z,
-    connections: %NonceGeekDAO.MiniMap.Connections{}
+    connections: %Kantele.MiniMap.Connections{}
   ]
 end
 
-defmodule NonceGeekDAO.MiniMap do
+defmodule Kantele.MiniMap do
   @moduledoc """
   Structures and functions for dealing with minimaps of zones and rooms
 

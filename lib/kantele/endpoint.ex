@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Websocket.Endpoint do
+defmodule Kantele.Websocket.Endpoint do
   @moduledoc false
 
   use Plug.Router
@@ -7,7 +7,7 @@ defmodule NonceGeekDAO.Websocket.Endpoint do
     at: "/",
     gzip: true,
     only: ["css", "images", "js", "robots.txt"],
-    from: :NonceGeekDAO
+    from: :kantele
   )
 
   plug(:match)
@@ -18,7 +18,7 @@ defmodule NonceGeekDAO.Websocket.Endpoint do
   end
 
   match _ do
-    index_file = Path.join(:code.priv_dir(:NonceGeekDAO), "static/index.html")
+    index_file = Path.join(:code.priv_dir(:kantele), "static/index.html")
     send_resp(conn, 200, File.read!(index_file))
   end
 end

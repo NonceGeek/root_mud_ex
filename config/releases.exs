@@ -1,12 +1,12 @@
 import Config
 
-config :web3_mud_ex, Web3MUDEx.Repo, ssl: System.get_env("DATABASE_SSL") == "true"
+config :ex_venture, ExVenture.Repo, ssl: System.get_env("DATABASE_SSL") == "true"
 
-config :web3_mud_ex, Web.Endpoint,
+config :ex_venture, Web.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json",
   server: true
 
-config :web3_mud_ex, Web3MUDEx.Mailer, adapter: Bamboo.LocalAdapter
+config :ex_venture, ExVenture.Mailer, adapter: Bamboo.LocalAdapter
 
 config :logger, level: :info
 

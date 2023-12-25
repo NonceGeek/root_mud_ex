@@ -1,9 +1,9 @@
 defmodule Web.API.StagedChangeController do
   use Web, :controller
 
-  alias Web3MUDEx.Rooms
-  alias Web3MUDEx.StagedChanges
-  alias Web3MUDEx.Zones
+  alias ExVenture.Rooms
+  alias ExVenture.StagedChanges
+  alias ExVenture.Zones
 
   def index(conn, %{"room_id" => room_id}) do
     {:ok, room} = Rooms.get(room_id)

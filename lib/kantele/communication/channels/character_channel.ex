@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.CharacterChannel do
+defmodule Kantele.CharacterChannel do
   use Kalevala.Communication.Channel
 
   @impl true

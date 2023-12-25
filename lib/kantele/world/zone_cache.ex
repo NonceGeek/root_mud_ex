@@ -1,11 +1,11 @@
-defmodule NonceGeekDAO.World.ZoneCache do
+defmodule Kantele.World.ZoneCache do
   @moduledoc """
   Cache for world data
   """
 
   use Kalevala.Cache
 
-  alias NonceGeekDAO.MiniMap
+  alias Kantele.MiniMap
 
   def cache(zone) do
     :ok = put(zone.id, zone)

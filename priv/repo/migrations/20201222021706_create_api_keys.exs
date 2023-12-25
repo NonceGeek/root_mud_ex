@@ -1,4 +1,4 @@
-defmodule Web3MUDEx.Repo.Migrations.CreateApiKeys do
+defmodule ExVenture.Repo.Migrations.CreateApiKeys do
   use Ecto.Migration
 
   def change do

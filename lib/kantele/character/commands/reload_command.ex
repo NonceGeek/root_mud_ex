@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.ReloadCommand do
+defmodule Kantele.Character.ReloadCommand do
   @moduledoc """
   WARNING
 
@@ -9,7 +9,7 @@ defmodule NonceGeekDAO.Character.ReloadCommand do
 
   use Kalevala.Character.Command
 
-  alias NonceGeekDAO.Character.ReloadView
+  alias Kantele.Character.ReloadView
 
   def recompile(conn, _params) do
     if Code.ensure_loaded?(Mix) do
@@ -24,7 +24,7 @@ defmodule NonceGeekDAO.Character.ReloadCommand do
       IEx.Helpers.recompile()
     end
 
-    NonceGeekDAO.World.Kickoff.reload()
+    Kantele.World.Kickoff.reload()
 
     render(conn, ReloadView, "reloaded")
   end

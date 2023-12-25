@@ -1,11 +1,11 @@
-defmodule NonceGeekDAO.Character.ItemEvent do
+defmodule Kantele.Character.ItemEvent do
   use Kalevala.Character.Event
 
   require Logger
 
-  alias NonceGeekDAO.Character.CommandView
-  alias NonceGeekDAO.Character.ItemView
-  alias NonceGeekDAO.World.Items
+  alias Kantele.Character.CommandView
+  alias Kantele.Character.ItemView
+  alias Kantele.World.Items
 
   def drop_abort(conn, %{data: %{reason: :no_item, item_name: item_name}}) do
     conn

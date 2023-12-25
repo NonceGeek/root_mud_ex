@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.WhisperCommand do
+defmodule Kantele.Character.WhisperCommand do
   use Kalevala.Character.Command
 
   def run(conn, params) do

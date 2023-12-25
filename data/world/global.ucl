@@ -66,8 +66,8 @@ items "longsword" {
 # Healing
 
 items "potion" {
-  name = "Healing Potion"
-  description = "A potion to heal what ails you."
+  name = "元气馒头"
+  description = "李大狗精制元气馒头。"
 
   verbs = [
     "drop",
@@ -75,49 +75,5 @@ items "potion" {
     # "look",
     # "quaff",
     # "steal"
-  ]
-}
-
-items "airdropper" {
-  name = "Airdropper"
-  description = "Airdropper Coins to Repo Contributors."
-
-  verbs = [
-    "drop",
-    "get",
-    "contract"
-  ]
-}
-
-items "crowdfund" {
-  name = "Crowdfund"
-  description = "Crowdfund this Repo."
-
-  verbs = [
-    "drop",
-    "get",
-    "contract"
-  ]
-}
-
-items "genreadme" {
-  name = "GenerateReadme"
-  description = "Generate Web3 Readme for this Project."
-
-  verbs = [
-    "drop",
-    "get",
-    "contract"
-  ]
-}
-
-items "bountychecker" {
-  name = "BountyChecker"
-  description = "Check the bounties of this dao."
-
-  verbs = [
-    "drop",
-    "get",
-    "contract"
   ]
 }

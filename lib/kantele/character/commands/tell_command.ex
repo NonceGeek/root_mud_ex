@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.TellCommand do
+defmodule Kantele.Character.TellCommand do
   use Kalevala.Character.Command
 
   def run(conn, params) do

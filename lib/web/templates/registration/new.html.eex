@@ -1,8 +1,8 @@
 <div class="sm:mx-auto sm:w-full sm:max-w-md">
-  <%= img_tag("/images/exventure.png", class: "mx-auto h-32 w-auto", alt: "Web3MUDEx Logo") %>
+  <%= img_tag("/images/exventure.png", class: "mx-auto h-32 w-auto", alt: "ExVenture Logo") %>
 
   <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-    Register for <%= gettext("Web3MUDEx") %>
+    Register for <%= gettext("rootMUD") %>
   </h2>
 </div>
 
@@ -17,24 +17,18 @@
       </div>
 
       <div>
-        <%= label(f, :email, class: "block text-sm font-medium text-gray-700") %>
-        <div class="mt-1">
-          <%= text_input(f, :email, autocomplete: "email", required: true, class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm") %>
-        </div>
-      </div>
-
-      <div>
-        <%= label(f, :password, class: "block text-sm font-medium text-gray-700") %>
-        <div class="mt-1">
-          <%= password_input(f, :password, required: true, class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm") %>
-        </div>
-      </div>
-
-      <div>
-        <%= label(f, :password_confirmation, class: "block text-sm font-medium text-gray-700") %>
-        <div class="mt-1">
-          <%= password_input(f, :password_confirmation, required: true, class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm") %>
-        </div>
+        <center>
+        <button className="btn-primary" type="button" phx-click="new_item"  value="new_item">Go to signature dApp</button>
+        </center>
+        <br><br>
+          <%= label(f, :paste_your_address, class: "block text-sm font-medium text-gray-700") %>
+          <div class="mt-1">
+            <%= text_input(f, :addr, autocomplete: "0x0", required: true, class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm") %>
+          </div>
+          <%= label(f, :paste_the_signature, class: "block text-sm font-medium text-gray-700") %>
+          <div class="mt-1">
+            <%= text_input(f, :signature, autocomplete: "0x0", required: true, class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm") %>
+          </div>
       </div>
 
       <div>

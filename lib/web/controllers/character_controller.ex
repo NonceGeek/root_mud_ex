@@ -1,7 +1,7 @@
 defmodule Web.CharacterController do
   use Web, :controller
 
-  alias Web3MUDEx.Characters
+  alias ExVenture.Characters
 
   def create(conn, %{"character" => params}) do
     %{current_user: user} = conn.assigns

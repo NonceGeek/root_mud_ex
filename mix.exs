@@ -1,9 +1,9 @@
-defmodule Web3MUDEx.MixProject do
+defmodule ExVenture.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :web3_mud_ex,
+      app: :ex_venture,
       version: "0.1.0",
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -13,8 +13,8 @@ defmodule Web3MUDEx.MixProject do
       deps: deps(),
 
       # Docs
-      name: "Web3MUDEx",
-      source_url: "https://github.com/oestrich/web3_mud_ex",
+      name: "ExVenture",
+      source_url: "https://github.com/oestrich/ex_venture",
       homepage_url: "https://exventure.org",
       docs: [
         main: "readme",
@@ -29,7 +29,7 @@ defmodule Web3MUDEx.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Web3MUDEx.Application, []},
+      mod: {ExVenture.Application, []},
       extra_applications: [:iex, :logger, :runtime_tools]
     ]
   end
@@ -67,10 +67,9 @@ defmodule Web3MUDEx.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:vapor, "~> 0.10.0"},
 
-      {:nimble_parsec, "~> 1.2", override: true},
-      {:ecto, "~> 3.4.6", override: true},
-      {:rename_project, "~> 0.1.0", only: :dev},
-      {:web3_move_ex, "~> 0.6.2"},
+      # wallets
+      # {:eth_wallet, "~> 0.1.0"}
+      {:eth, "~> 0.6.5"}
     ]
   end
 

@@ -1,9 +1,9 @@
-defmodule NonceGeekDAO.Character.LookView do
+defmodule Kantele.Character.LookView do
   use Kalevala.Character.View
 
   alias Kalevala.Character.Conn.EventText
-  alias NonceGeekDAO.Character.CharacterView
-  alias NonceGeekDAO.Character.ItemView
+  alias Kantele.Character.CharacterView
+  alias Kantele.Character.ItemView
 
   def render("look", %{room: room, characters: characters, item_instances: item_instances}) do
     %EventText{

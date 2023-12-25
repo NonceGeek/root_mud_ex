@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.World.Room do
+defmodule Kantele.World.Room do
   @moduledoc """
   Callbacks for a Kalevala room
   """
@@ -6,10 +6,10 @@ defmodule NonceGeekDAO.World.Room do
   require Logger
 
   alias Kalevala.Verb
-  alias NonceGeekDAO.Communication
-  alias NonceGeekDAO.RoomChannel
-  alias NonceGeekDAO.World.Items
-  alias NonceGeekDAO.World.Room.Events
+  alias Kantele.Communication
+  alias Kantele.RoomChannel
+  alias Kantele.World.Items
+  alias Kantele.World.Room.Events
 
   defstruct [
     :id,
@@ -94,7 +94,7 @@ defmodule NonceGeekDAO.World.Room do
     require Logger
 
     alias Kalevala.World.BasicRoom
-    alias NonceGeekDAO.World.Room
+    alias Kantele.World.Room
 
     @impl true
     def init(room), do: room
@@ -102,6 +102,7 @@ defmodule NonceGeekDAO.World.Room do
     @impl true
     def initialized(room), do: Room.initialized(room)
 
+    # event is def here.
     @impl true
     def event(_room, context, event), do: Room.event(context, event)
 
@@ -129,12 +130,12 @@ defmodule NonceGeekDAO.World.Room do
   end
 end
 
-defmodule NonceGeekDAO.World.Room.Events do
+defmodule Kantele.World.Room.Events do
   @moduledoc false
 
   use Kalevala.Event.Router
 
-  scope(NonceGeekDAO.World.Room) do
+  scope(Kantele.World.Room) do
     module(ContextEvent) do
       event("context/lookup", :call)
     end
@@ -167,13 +168,17 @@ defmodule NonceGeekDAO.World.Room.Events do
       event("tell/send", :call)
     end
 
+    module(FightEvent) do
+      event("fight/send", :call)
+    end
+
     module(WhisperEvent) do
       event("whisper/send", :call)
     end
   end
 end
 
-defmodule NonceGeekDAO.World.Room.ForwardEvent do
+defmodule Kantele.World.Room.ForwardEvent do
   import Kalevala.World.Room.Context
 
   def call(context, event) do
@@ -181,7 +186,7 @@ defmodule NonceGeekDAO.World.Room.ForwardEvent do
   end
 end
 
-defmodule NonceGeekDAO.World.Room.RandomExitEvent do
+defmodule Kantele.World.Room.RandomExitEvent do
   import Kalevala.World.Room.Context
 
   def call(context, event) do
@@ -194,12 +199,12 @@ defmodule NonceGeekDAO.World.Room.RandomExitEvent do
   end
 end
 
-defmodule NonceGeekDAO.World.Room.LookEvent do
+defmodule Kantele.World.Room.LookEvent do
   import Kalevala.World.Room.Context
 
-  alias NonceGeekDAO.Character.LookView
-  alias NonceGeekDAO.World.Items
-  alias NonceGeekDAO.World.ZoneCache
+  alias Kantele.Character.LookView
+  alias Kantele.World.Items
+  alias Kantele.World.ZoneCache
 
   def call(context, event) do
     x = context.data.x
@@ -229,11 +234,11 @@ defmodule NonceGeekDAO.World.Room.LookEvent do
   end
 end
 
-defmodule NonceGeekDAO.World.Room.MapEvent do
+defmodule Kantele.World.Room.MapEvent do
   import Kalevala.World.Room.Context
 
-  alias NonceGeekDAO.Character.MapView
-  alias NonceGeekDAO.World.ZoneCache
+  alias Kantele.Character.MapView
+  alias Kantele.World.ZoneCache
 
   def call(context, event) do
     x = context.data.x
@@ -249,13 +254,13 @@ defmodule NonceGeekDAO.World.Room.MapEvent do
   end
 end
 
-defmodule NonceGeekDAO.World.Room.ContextEvent do
+defmodule Kantele.World.Room.ContextEvent do
   import Kalevala.World.Room.Context
 
   alias Kalevala.Verb
   alias Kalevala.World.Item
-  alias NonceGeekDAO.Character.ContextView
-  alias NonceGeekDAO.World.Items
+  alias Kantele.Character.ContextView
+  alias Kantele.World.Items
 
   def call(context, %{from_pid: from_pid, data: %{type: :item, id: id}}) do
     item_instance =
@@ -283,7 +288,7 @@ defmodule NonceGeekDAO.World.Room.ContextEvent do
   defp handle_context(context, from_pid, item_instance) do
     item = Items.get!(item_instance.item_id)
     item_instance = %{item_instance | item: item}
-    IO.puts inspect item
+
     verbs = Item.context_verbs(item, %{location: "room"})
     verbs = Verb.replace_variables(verbs, %{id: item_instance.id})
 
@@ -295,7 +300,7 @@ defmodule NonceGeekDAO.World.Room.ContextEvent do
   end
 end
 
-defmodule NonceGeekDAO.World.Room.SayEvent do
+defmodule Kantele.World.Room.SayEvent do
   import Kalevala.World.Room.Context
 
   def call(context, event) do
@@ -312,7 +317,8 @@ defmodule NonceGeekDAO.World.Room.SayEvent do
   end
 end
 
-defmodule NonceGeekDAO.World.Room.TellEvent do
+
+defmodule Kantele.World.Room.FightEvent do
   import Kalevala.World.Room.Context
 
   def call(context, event) do
@@ -327,7 +333,7 @@ defmodule NonceGeekDAO.World.Room.TellEvent do
   end
 
   defp find_player_character(name) do
-    characters = NonceGeekDAO.Character.Presence.characters()
+    characters = Kantele.Character.Presence.characters()
     find_character(characters, name)
   end
 
@@ -338,7 +344,33 @@ defmodule NonceGeekDAO.World.Room.TellEvent do
   end
 end
 
-defmodule NonceGeekDAO.World.Room.WhisperEvent do
+defmodule Kantele.World.Room.TellEvent do
+  import Kalevala.World.Room.Context
+
+  def call(context, event) do
+    name = event.data.name
+    character = find_local_character(context, name) || find_player_character(name)
+    data = Map.put(event.data, :character, character)
+    event(context, event.from_pid, self(), event.topic, data)
+  end
+
+  defp find_local_character(context, name) do
+    find_character(context.characters, name)
+  end
+
+  defp find_player_character(name) do
+    characters = Kantele.Character.Presence.characters()
+    find_character(characters, name)
+  end
+
+  defp find_character(characters, name) do
+    Enum.find(characters, fn character ->
+      Kalevala.Character.matches?(character, name)
+    end)
+  end
+end
+
+defmodule Kantele.World.Room.WhisperEvent do
   import Kalevala.World.Room.Context
 
   def call(context, event) do
@@ -355,7 +387,7 @@ defmodule NonceGeekDAO.World.Room.WhisperEvent do
   end
 end
 
-defmodule NonceGeekDAO.World.Room.NotifyEvent do
+defmodule Kantele.World.Room.NotifyEvent do
   import Kalevala.World.Room.Context
 
   def call(context, event) do

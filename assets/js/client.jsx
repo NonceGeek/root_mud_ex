@@ -93,7 +93,7 @@ const Client = () => {
       <ValidateLoggedIn />
       <div className="flex flex-row h-full">
         <Sidebar side="left" width="w-1/4 max-w-xs">
-          <h3 className="text-white text-3xl text-center pt-2">Web3MUDEx</h3>
+          <h3 className="text-white text-3xl text-center pt-2">ExVenture</h3>
           <Vitals />
           <SidebarSplit />
           <Inventory />

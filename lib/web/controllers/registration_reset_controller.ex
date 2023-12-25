@@ -1,7 +1,7 @@
 defmodule Web.RegistrationResetController do
   use Web, :controller
 
-  alias Web3MUDEx.Users
+  alias ExVenture.Users
 
   plug(:put_layout, "session.html")
 

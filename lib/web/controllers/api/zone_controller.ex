@@ -1,7 +1,7 @@
 defmodule Web.API.ZoneController do
   use Web, :controller
 
-  alias Web3MUDEx.Zones
+  alias ExVenture.Zones
 
   plug(Web.Plugs.FetchPage when action in [:index])
 

@@ -1,7 +1,7 @@
-defmodule NonceGeekDAO.Character.WhisperView do
+defmodule Kantele.Character.WhisperView do
   use Kalevala.Character.View
 
-  alias NonceGeekDAO.Character.CharacterView
+  alias Kantele.Character.CharacterView
 
   def render("echo", %{character: character, text: text}) do
     [

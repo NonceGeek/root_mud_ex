@@ -1,8 +1,8 @@
 defmodule Web.Admin.ZoneController do
   use Web, :controller
 
-  alias Web3MUDEx.StagedChanges
-  alias Web3MUDEx.Zones
+  alias ExVenture.StagedChanges
+  alias ExVenture.Zones
 
   plug(Web.Plugs.ActiveTab, tab: :zones)
   plug(Web.Plugs.FetchPage when action in [:index])

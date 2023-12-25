@@ -1,8 +1,8 @@
-defmodule NonceGeekDAO.Character.MoveView do
+defmodule Kantele.Character.MoveView do
   use Kalevala.Character.View
 
   alias Kalevala.Character.Conn.EventText
-  alias NonceGeekDAO.Character.CharacterView
+  alias Kantele.Character.CharacterView
 
   def render("enter", %{character: character}) do
     ~i(#{CharacterView.render("name", %{character: character})} enters.)

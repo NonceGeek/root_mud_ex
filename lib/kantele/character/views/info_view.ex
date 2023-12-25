@@ -1,9 +1,11 @@
-defmodule NonceGeekDAO.Character.InfoView do
+defmodule Kantele.Character.InfoView do
   use Kalevala.Character.View
 
   alias Kalevala.Character.Conn.EventText
+  require Logger
 
   def render("display", %{character: character}) do
+    Logger.info("--- info ---")
     %EventText{
       topic: "Character.Info",
       data: character,
@@ -17,10 +19,7 @@ defmodule NonceGeekDAO.Character.InfoView do
     ~i"""
     {table}
       {row}
-        {cell}Winzard of SUI{/cell}
-      {/row}
-      {row}
-        {cell}{sui_addr}#{vitals.sui_addr}{/sui_addr}{/cell}
+        {cell}Eric The Alchemist{/cell}
       {/row}
       {row}
         {cell}HP{/cell}

@@ -1,8 +1,8 @@
-defmodule NonceGeekDAO.Character.ChannelEvent do
+defmodule Kantele.Character.ChannelEvent do
   use Kalevala.Character.Event
 
-  alias NonceGeekDAO.Character.ChannelView
-  alias NonceGeekDAO.Character.CommandView
+  alias Kantele.Character.ChannelView
+  alias Kantele.Character.CommandView
 
   def interested?(event) do
     match?("general", event.data.channel_name)

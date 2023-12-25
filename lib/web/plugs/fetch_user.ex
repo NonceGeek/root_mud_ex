@@ -5,7 +5,7 @@ defmodule Web.Plugs.FetchUser do
 
   import Plug.Conn
 
-  alias Web3MUDEx.Users
+  alias ExVenture.Users
 
   def init(default), do: default
 

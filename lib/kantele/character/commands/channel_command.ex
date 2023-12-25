@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.ChannelCommand do
+defmodule Kantele.Character.ChannelCommand do
   use Kalevala.Character.Command
 
   def general(conn, params) do

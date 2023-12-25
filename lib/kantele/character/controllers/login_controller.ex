@@ -1,20 +1,20 @@
-defmodule NonceGeekDAO.Character.LoginController do
+defmodule Kantele.Character.LoginController do
   use Kalevala.Character.Controller
 
   require Logger
 
-  alias Web3MUDEx.Characters
+  alias ExVenture.Characters
   alias Kalevala.Character
-  alias NonceGeekDAO.Character.ChannelEvent
-  alias NonceGeekDAO.Character.CharacterView
-  alias NonceGeekDAO.Character.CommandController
-  alias NonceGeekDAO.Character.LoginView
-  alias NonceGeekDAO.Character.MoveEvent
-  alias NonceGeekDAO.Character.MoveView
-  alias NonceGeekDAO.Character.QuitView
-  alias NonceGeekDAO.Character.TellEvent
-  alias NonceGeekDAO.CharacterChannel
-  alias NonceGeekDAO.Communication
+  alias Kantele.Character.ChannelEvent
+  alias Kantele.Character.CharacterView
+  alias Kantele.Character.CommandController
+  alias Kantele.Character.LoginView
+  alias Kantele.Character.MoveEvent
+  alias Kantele.Character.MoveView
+  alias Kantele.Character.QuitView
+  alias Kantele.Character.TellEvent
+  alias Kantele.CharacterChannel
+  alias Kantele.Communication
 
   @impl true
   def init(conn) do
@@ -90,6 +90,7 @@ defmodule NonceGeekDAO.Character.LoginController do
   end
 
   defp process_character(conn, character_name) do
+    # login character here.
     character =
       character_name
       |> String.trim()
@@ -118,68 +119,30 @@ defmodule NonceGeekDAO.Character.LoginController do
     end
   end
 
+  # Important: character buidling here.
   defp build_character(name) do
     starting_room_id =
-      NonceGeekDAO.Config.get([:player, :starting_room_id])
-      |> NonceGeekDAO.World.dereference()
+      Kantele.Config.get([:player, :starting_room_id])
+      |> Kantele.World.dereference()
 
-    # generate an Sui Acct.
-    {
-      :ok,
-      %{
-        sui_address_hex: sui_addr,
-        priv_key_base64: priv,
-        }
-    } = {:ok, %Web3MoveEx.Sui.Account{
-      sui_address: <<173, 247, 138, 113, 25, 16, 185, 209, 222, 3, 2, 38, 31, 18,
-        48, 156, 136, 2, 245, 243, 0, 205, 170, 16, 200, 119, 17, 120, 234, 150,
-        208, 145>>,
-      sui_address_hex: "0xadf78a711910b9d1de0302261f12309c8802f5f300cdaa10c8771178ea96d091",
-      priv_key: <<0, 11, 166, 31, 134, 41, 92, 19, 157, 130, 92, 13, 61, 169, 69,
-        25, 184, 250, 110, 217, 83, 192, 231, 128, 112, 2, 108, 115, 39, 229, 224,
-        14, 7>>,
-      priv_key_base64: "AAumH4YpXBOdglwNPalFGbj6btlTwOeAcAJscyfl4A4H",
-      key_schema: "ed25519",
-      phrase: "city record reject glow similar misery finger tongue wage diesel high prevent end gadget pill tiny shine muffin prefer coffee custom shell quantum office"
-    }}
-
+    # TODO: load infomations from database.
     %Character{
       id: Character.generate_id(),
       pid: self(),
       room_id: starting_room_id,
       name: name,
       status: "#{name} is here.",
-      description: "#{name} is a web3 buidler.",
+      description: "#{name} is a person.",
       inventory: [
         %Kalevala.World.Item.Instance{
           id: Kalevala.World.Item.Instance.generate_id(),
-          item_id: "global:airdropper",
+          item_id: "global:potion",
           created_at: DateTime.utc_now(),
-          meta: %NonceGeekDAO.World.Item.Meta{}
-        },
-        %Kalevala.World.Item.Instance{
-          id: Kalevala.World.Item.Instance.generate_id(),
-          item_id: "global:crowdfund",
-          created_at: DateTime.utc_now(),
-          meta: %NonceGeekDAO.World.Item.Meta{}
-        },
-        %Kalevala.World.Item.Instance{
-          id: Kalevala.World.Item.Instance.generate_id(),
-          item_id: "global:genreadme",
-          created_at: DateTime.utc_now(),
-          meta: %NonceGeekDAO.World.Item.Meta{}
-        },
-        %Kalevala.World.Item.Instance{
-          id: Kalevala.World.Item.Instance.generate_id(),
-          item_id: "global:bountychecker",
-          created_at: DateTime.utc_now(),
-          meta: %NonceGeekDAO.World.Item.Meta{}
+          meta: %Kantele.World.Item.Meta{}
         }
       ],
-      meta: %NonceGeekDAO.Character.PlayerMeta{
-        vitals: %NonceGeekDAO.Character.Vitals{
-          sui_addr: sui_addr,
-          priv: priv,
+      meta: %Kantele.Character.PlayerMeta{
+        vitals: %Kantele.Character.Vitals{
           health_points: 25,
           max_health_points: 25,
           skill_points: 17,

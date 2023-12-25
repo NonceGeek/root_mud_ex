@@ -1,8 +1,8 @@
-defmodule NonceGeekDAO.Character.ChannelView do
+defmodule Kantele.Character.ChannelView do
   use Kalevala.Character.View
 
   alias Kalevala.Character.Conn.EventText
-  alias NonceGeekDAO.Character.CharacterView
+  alias Kantele.Character.CharacterView
 
   def render("name", %{name: name}) do
     ~i({color foreground="white"}[#{name}]{/color})

@@ -1,7 +1,7 @@
-defmodule NonceGeekDAO.Character.QuitCommand do
+defmodule Kantele.Character.QuitCommand do
   use Kalevala.Character.Command
 
-  alias NonceGeekDAO.Character.QuitView
+  alias Kantele.Character.QuitView
 
   def run(conn, _params) do
     conn

@@ -2,7 +2,7 @@ defmodule Web.RegistrationResetControllerTest do
   use Web.ConnCase
   use Bamboo.Test
 
-  alias Web3MUDEx.Users
+  alias ExVenture.Users
 
   describe "starting reset" do
     test "sends an email", %{conn: conn} do

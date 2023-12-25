@@ -36,7 +36,7 @@ Item.propTypes = {
 let Inventory = ({ dispatch, inventory }) => {
   return (
     <div className="flex flex-col overflow-y-scroll">
-      <h3 className="text-xl text-gray-200 px-4 pt-4">DAO Plugins</h3>
+      <h3 className="text-xl text-gray-200 px-4 pt-4">Inventory</h3>
       <div className="flex-grow overflow-y-scroll">
         {inventory.map((itemInstance) => {
           return <Item key={itemInstance.id} dispatch={dispatch} itemInstance={itemInstance} />;

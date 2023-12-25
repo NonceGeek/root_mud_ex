@@ -1,13 +1,13 @@
-defmodule NonceGeekDAO.Character.SpawnController do
+defmodule Kantele.Character.SpawnController do
   use Kalevala.Character.Controller
 
   alias Kalevala.Brain
-  alias NonceGeekDAO.Character.MoveEvent
-  alias NonceGeekDAO.Character.NonPlayerEvents
-  alias NonceGeekDAO.Character.SpawnView
-  alias NonceGeekDAO.Character.TellEvent
-  alias NonceGeekDAO.CharacterChannel
-  alias NonceGeekDAO.Communication
+  alias Kantele.Character.MoveEvent
+  alias Kantele.Character.NonPlayerEvents
+  alias Kantele.Character.SpawnView
+  alias Kantele.Character.TellEvent
+  alias Kantele.CharacterChannel
+  alias Kantele.Communication
 
   @impl true
   def init(conn) do

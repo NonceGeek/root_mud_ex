@@ -1,10 +1,10 @@
-defmodule NonceGeekDAO.Character.TellEvent do
+defmodule Kantele.Character.TellEvent do
   use Kalevala.Character.Event
 
   require Logger
 
-  alias NonceGeekDAO.Character.CommandView
-  alias NonceGeekDAO.Character.TellView
+  alias Kantele.Character.CommandView
+  alias Kantele.Character.TellView
 
   def interested?(event) do
     match?("characters:" <> _, event.data.channel_name)

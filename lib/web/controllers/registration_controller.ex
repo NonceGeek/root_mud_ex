@@ -3,13 +3,14 @@ defmodule Web.RegistrationController do
 
   import Web.Gettext, only: [gettext: 1]
 
-  alias Web3MUDEx.Users
+  alias ExVenture.Users
 
   action_fallback(Web.FallbackController)
 
   plug(:put_layout, "session.html")
 
   def new(conn, _params) do
+    # TODO: verify sig...
     conn
     |> assign(:changeset, Users.new())
     |> render("new.html")
@@ -19,7 +20,7 @@ defmodule Web.RegistrationController do
     case Users.create(params) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "Welcome to #{gettext("Web3MUDEx")}!")
+        |> put_flash(:info, "Welcome to #{gettext("ExVenture")}!")
         |> put_session(:user_token, user.token)
         |> redirect(to: Routes.page_path(conn, :index))
 

@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.FleeAction do
+defmodule Kantele.Character.FleeAction do
   @moduledoc """
   Action to flee to a random exit in a room
   """

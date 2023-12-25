@@ -1,13 +1,13 @@
-defmodule Web3MUDEx.Repo.Migrations.CreateUsers do
+defmodule ExVenture.Repo.Migrations.CreateUsers do
   use Ecto.Migration
 
   def change do
     create table(:users) do
       add(:role, :string, default: "player", null: false)
-
       add(:username, :string, null: false)
-      add(:email, :string, null: false)
-      add(:password_hash, :string, null: false)
+      add(:address, :string)
+      add(:email, :string)
+      add(:password_hash, :string)
       add(:token, :uuid, null: false)
 
       add(:email_verification_token, :uuid)

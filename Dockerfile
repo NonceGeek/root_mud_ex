@@ -26,9 +26,9 @@ RUN mix release
 FROM alpine:3.12
 RUN apk add --no-cache bash openssl
 WORKDIR /app
-COPY --from=releaser /app/_build/prod/rel/web3_mud_ex /app/
+COPY --from=releaser /app/_build/prod/rel/ex_venture /app/
 COPY --from=releaser /app/data /app/data/
 ENV MIX_ENV=prod
 EXPOSE 4000
-ENTRYPOINT ["bin/web3_mud_ex"]
+ENTRYPOINT ["bin/ex_venture"]
 CMD ["start"]

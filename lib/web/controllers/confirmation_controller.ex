@@ -1,7 +1,7 @@
 defmodule Web.ConfirmationController do
   use Web, :controller
 
-  alias Web3MUDEx.Users
+  alias ExVenture.Users
 
   action_fallback(Web.FallbackController)
 

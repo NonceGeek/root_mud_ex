@@ -6,7 +6,7 @@ defmodule Web.Plugs.EnsureAdmin do
   import Plug.Conn
   import Phoenix.Controller
 
-  alias Web3MUDEx.Users
+  alias ExVenture.Users
   alias Web.Router.Helpers, as: Routes
 
   def init(default), do: default

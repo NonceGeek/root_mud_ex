@@ -1,9 +1,9 @@
-defmodule NonceGeekDAO.Character.ItemCommand do
+defmodule Kantele.Character.ItemCommand do
   use Kalevala.Character.Command
 
   alias Kalevala.Verb
-  alias NonceGeekDAO.Character.ItemView
-  alias NonceGeekDAO.World.Items
+  alias Kantele.Character.ItemView
+  alias Kantele.World.Items
 
   def drop(conn, %{"item_name" => item_name}) do
     item_instance =
@@ -32,16 +32,6 @@ defmodule NonceGeekDAO.Character.ItemCommand do
       false ->
         render(conn, ItemView, "unknown", %{item_name: item_name})
     end
-  end
-
-  def get_contract(conn, %{"item_name" => item_name}) do
-    item_instance =
-      Enum.find(conn.character.inventory, fn item_instance ->
-        item = Items.get!(item_instance.item_id)
-        item_instance.id == item_name || item.callback_module.matches?(item, item_name)
-      end)
-
-    render(conn, ItemView, "getcontract", item_instance)
   end
 
   def get(conn, %{"item_name" => item_name}) do

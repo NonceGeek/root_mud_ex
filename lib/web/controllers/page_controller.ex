@@ -1,7 +1,7 @@
 defmodule Web.PageController do
   use Web, :controller
 
-  alias Web3MUDEx.Characters
+  alias ExVenture.Characters
 
   def index(conn, _params) do
     render(conn, "index.html")

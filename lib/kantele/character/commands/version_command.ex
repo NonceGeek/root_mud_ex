@@ -1,7 +1,7 @@
-defmodule NonceGeekDAO.Character.VersionCommand do
+defmodule Kantele.Character.VersionCommand do
   use Kalevala.Character.Command
 
-  alias NonceGeekDAO.Character.VersionView
+  alias Kantele.Character.VersionView
 
   def run(conn, _params) do
     conn

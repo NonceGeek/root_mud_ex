@@ -186,7 +186,6 @@ let Map = ({ cells, room }) => {
 
   return (
     <div className="flex flex-col items-center" style={{ height: 310 }}>
-        <h3 className="text-xl text-gray-200 p-4">DAO-MUD Spaces</h3>
       <svg className="h-full" style={{ width: 310 }} version="1.1" xmlns="http://www.w3.org/2000/svg">
         <Cells cells={cells} currentX={currentX} currentY={currentY} currentZ={currentZ} cellComponent={Cell} />
         <Cells cells={cells} currentX={currentX} currentY={currentY} currentZ={currentZ} cellComponent={Exits} />

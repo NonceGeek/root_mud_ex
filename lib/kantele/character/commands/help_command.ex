@@ -1,8 +1,8 @@
-defmodule NonceGeekDAO.Character.HelpCommand do
+defmodule Kantele.Character.HelpCommand do
   use Kalevala.Character.Command
 
   alias Kalevala.Help
-  alias NonceGeekDAO.Character.HelpView
+  alias Kantele.Character.HelpView
 
   def index(conn, _params) do
     render(conn, HelpView, "index")

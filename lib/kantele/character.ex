@@ -1,6 +1,6 @@
-defmodule NonceGeekDAO.Character.PlayerMeta do
+defmodule Kantele.Character.PlayerMeta do
   @moduledoc """
-  Specific metadata for a character in NonceGeekDAO
+  Specific metadata for a character in Kantele
   """
 
   defstruct [:reply_to, :vitals]
@@ -18,9 +18,9 @@ defmodule NonceGeekDAO.Character.PlayerMeta do
   end
 end
 
-defmodule NonceGeekDAO.Character.NonPlayerMeta do
+defmodule Kantele.Character.NonPlayerMeta do
   @moduledoc """
-  Specific metadata for a world character in NonceGeekDAO
+  Specific metadata for a world character in Kantele
   """
 
   defstruct [:initial_events, :vitals, :zone_id]
@@ -38,15 +38,13 @@ defmodule NonceGeekDAO.Character.NonPlayerMeta do
   end
 end
 
-defmodule NonceGeekDAO.Character.Vitals do
+defmodule Kantele.Character.Vitals do
   @moduledoc """
   Character vital information
   """
 
   @derive Jason.Encoder
   defstruct [
-    :priv,
-    :sui_addr,
     :health_points,
     :max_health_points,
     :skill_points,
@@ -56,7 +54,7 @@ defmodule NonceGeekDAO.Character.Vitals do
   ]
 end
 
-defmodule NonceGeekDAO.Character.InitialEvent do
+defmodule Kantele.Character.InitialEvent do
   @moduledoc """
   Initial events to kick off when a character starts
   """

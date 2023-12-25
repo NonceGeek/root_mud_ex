@@ -1,5 +1,5 @@
 key = "welcome"
-title = "Welcome to NonceGeekDAO"
+title = "Welcome to 元真宫"
 see_also = ["newbie"]
 ---
-Welcome to {color foreground="256:39"}NonceGeekDAO{/color}. This is an example game for {color foreground="cyan"}Kalevala{/color}.
+Welcome to {color foreground="256:39"}元真宫{/color}. This is an example game for {color foreground="cyan"}Kalevala{/color}.

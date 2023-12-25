@@ -1,8 +1,8 @@
 defmodule Web.API.RoomController do
   use Web, :controller
 
-  alias Web3MUDEx.Rooms
-  alias Web3MUDEx.Zones
+  alias ExVenture.Rooms
+  alias ExVenture.Zones
 
   plug(Web.Plugs.FetchPage when action in [:index])
 

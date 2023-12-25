@@ -1,8 +1,8 @@
 defmodule Web.Admin.StagedChangeView do
   use Web, :view
 
-  alias Web3MUDEx.Rooms.Room
-  alias Web3MUDEx.Zones.Zone
+  alias ExVenture.Rooms.Room
+  alias ExVenture.Zones.Zone
 
   def schema_header(Room) do
     content_tag(:div, "Rooms", class: "text-center text-lg font-bold")

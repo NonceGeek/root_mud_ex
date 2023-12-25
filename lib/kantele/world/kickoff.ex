@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.World.Kickoff do
+defmodule Kantele.World.Kickoff do
   @moduledoc """
   Kicks off the world by loading and booting it
   """
@@ -7,8 +7,8 @@ defmodule NonceGeekDAO.World.Kickoff do
 
   alias Kalevala.World.CharacterSupervisor
   alias Kalevala.World.RoomSupervisor
-  alias NonceGeekDAO.World.Loader
-  alias NonceGeekDAO.World.ZoneCache
+  alias Kantele.World.Loader
+  alias Kantele.World.ZoneCache
 
   @doc false
   def start_link(opts) do
@@ -62,8 +62,8 @@ defmodule NonceGeekDAO.World.Kickoff do
 
   defp start_zone(zone) do
     config = %{
-      supervisor_name: NonceGeekDAO.World,
-      callback_module: NonceGeekDAO.World.Zone
+      supervisor_name: Kantele.World,
+      callback_module: Kantele.World.Zone
     }
 
     case GenServer.whereis(Kalevala.World.Zone.global_name(zone)) do
@@ -79,7 +79,7 @@ defmodule NonceGeekDAO.World.Kickoff do
   defp start_room(room) do
     config = %{
       supervisor_name: RoomSupervisor.global_name(room.zone_id),
-      callback_module: NonceGeekDAO.World.Room
+      callback_module: Kantele.World.Room
     }
 
     item_instances = Map.get(room, :item_instances, [])
@@ -98,16 +98,16 @@ defmodule NonceGeekDAO.World.Kickoff do
   defp start_character(character) do
     config = [
       supervisor_name: CharacterSupervisor.global_name(character.meta.zone_id),
-      communication_module: NonceGeekDAO.Communication,
-      initial_controller: NonceGeekDAO.Character.SpawnController,
-      quit_view: {NonceGeekDAO.Character.QuitView, "disconnected"}
+      communication_module: Kantele.Communication,
+      initial_controller: Kantele.Character.SpawnController,
+      quit_view: {Kantele.Character.QuitView, "disconnected"}
     ]
 
     Kalevala.World.start_character(character, config)
   end
 
   defp cache_item(item) do
-    NonceGeekDAO.World.Items.put(item.id, item)
+    Kantele.World.Items.put(item.id, item)
   end
 
   # clean out all existing characters by terminating them

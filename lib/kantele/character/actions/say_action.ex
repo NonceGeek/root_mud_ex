@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.SayAction do
+defmodule Kantele.Character.SayAction do
   @moduledoc """
   Action to speak in a channel (e.g. a room)
   """

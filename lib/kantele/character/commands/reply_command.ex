@@ -1,7 +1,7 @@
-defmodule NonceGeekDAO.Character.ReplyCommand do
+defmodule Kantele.Character.ReplyCommand do
   use Kalevala.Character.Command
 
-  alias NonceGeekDAO.Character.ReplyView
+  alias Kantele.Character.ReplyView
 
   def run(conn, params) do
     character = character(conn)

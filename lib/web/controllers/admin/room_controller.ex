@@ -1,9 +1,9 @@
 defmodule Web.Admin.RoomController do
   use Web, :controller
 
-  alias Web3MUDEx.Rooms
-  alias Web3MUDEx.StagedChanges
-  alias Web3MUDEx.Zones
+  alias ExVenture.Rooms
+  alias ExVenture.StagedChanges
+  alias ExVenture.Zones
 
   plug(Web.Plugs.ActiveTab, tab: :rooms)
   plug(Web.Plugs.FetchPage when action in [:index])

@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.WanderAction do
+defmodule Kantele.Character.WanderAction do
   @moduledoc """
   Action to pick a random exit and move
   """

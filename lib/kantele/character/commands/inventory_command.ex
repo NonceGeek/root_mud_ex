@@ -1,8 +1,8 @@
-defmodule NonceGeekDAO.Character.InventoryCommand do
+defmodule Kantele.Character.InventoryCommand do
   use Kalevala.Character.Command
 
-  alias NonceGeekDAO.Character.InventoryView
-  alias NonceGeekDAO.World.Items
+  alias Kantele.Character.InventoryView
+  alias Kantele.World.Items
 
   def run(conn, _params) do
     item_instances =

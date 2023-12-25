@@ -1,11 +1,17 @@
-# RootMUDEx
+# ExVenture
 
-RootMUDEx, including 2 parts: `rootMUD Engine` & `rootMUD Creator`,
+![Main](https://github.com/oestrich/ex_venture/workflows/Main/badge.svg)
+[![Discord](https://img.shields.io/badge/chat-discord-7289da.svg)][discord]
+[![Patreon](https://img.shields.io/badge/support-patreon-F96854.svg)](https://www.patreon.com/ericoestrich)
 
-* `rootMUD Engine`: AI-based Game Engine focusing on TEXT, powered by [Movespace](https://github.com/NonceGeek/awesome-movespace).
+> **NOTE** This branch is the complete rewrite of ExVenture using [Kalevala](https://github.com/oestrich/kalevala) under the hood. Everything from the previous codebase is tossed out to start over again. If you're interested in something that's working _now_, please check out the [main](https://github.com/oestrich/ex_venture/tree/main) branch.
 
-* `rootMUD Creator`: based on `rootMUD Engine`, create MUD world for communities.
-> **NOTE** forked from `ex_venture`.
+<img src="https://raw.githubusercontent.com/oestrich/ex_venture/main/docs/images/exventure.png" alt="ExVenture Logo" width="200" />
+
+A text based MMO server written in Elixir.
+
+- [Support ExVenture on Patreon](https://www.patreon.com/ericoestrich)
+- [Chat with us on Discord][discord]
 
 ## Requirements
 
@@ -26,7 +32,9 @@ mix phx.server
 
 ## Kalevala
 
-Kalevala is a new underlying framework that Web3MUDEx is using under the hood. Kalevala sets up a common framework for dealing with commands, characters, views, and is all around a lot better to deal with than the previous version of Web3MUDEx.
+<img src="https://kalevala.dev/kalevala.png" alt="Kalevala Logo" width="400" />
+
+Kalevala is a new underlying framework that ExVenture is using under the hood. Kalevala sets up a common framework for dealing with commands, characters, views, and is all around a lot better to deal with than the previous version of ExVenture.
 
 ## Running Tests
 
@@ -44,7 +52,7 @@ Docker is set up as a replication of production. This generates an erlang releas
 docker-compose pull
 docker-compose build
 docker-compose up -d postgres
-docker-compose run --rm app eval "Web3MUDEx.ReleaseTasks.Migrate.run()"
+docker-compose run --rm app eval "ExVenture.ReleaseTasks.Migrate.run()"
 docker-compose up app
 ```
 

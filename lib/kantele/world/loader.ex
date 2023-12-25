@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.World.Loader do
+defmodule Kantele.World.Loader do
   @moduledoc """
   Load the world from data files
   """
@@ -6,8 +6,8 @@ defmodule NonceGeekDAO.World.Loader do
   alias Kalevala.Character
   alias Kalevala.World.Item
   alias Kalevala.World.Room.Feature
-  alias NonceGeekDAO.World.Room
-  alias NonceGeekDAO.World.Zone
+  alias Kantele.World.Room
+  alias Kantele.World.Zone
 
   @paths %{
     brains_path: "data/brains",
@@ -23,7 +23,7 @@ defmodule NonceGeekDAO.World.Loader do
     paths = Map.merge(@paths, paths)
 
     world_data = load_folder(paths.world_path, ".ucl", &merge_world_data/1)
-    brain_data = NonceGeekDAO.Brain.load_all(paths.brains_path)
+    brain_data = Kantele.Brain.load_all(paths.brains_path)
 
     verbs = parse_verbs(Elias.parse(File.read!(paths.verbs_path)))
 
@@ -201,11 +201,11 @@ defmodule NonceGeekDAO.World.Loader do
       id: "#{zone.id}:#{key}",
       name: character_data.name,
       description: character_data.description,
-      brain: NonceGeekDAO.Brain.process(Map.get(character_data, :brain), brains),
-      meta: %NonceGeekDAO.Character.NonPlayerMeta{
+      brain: Kantele.Brain.process(Map.get(character_data, :brain), brains),
+      meta: %Kantele.Character.NonPlayerMeta{
         zone_id: zone.id,
         initial_events: parse_initial_events(character_data),
-        vitals: %NonceGeekDAO.Character.Vitals{
+        vitals: %Kantele.Character.Vitals{
           health_points: 25,
           max_health_points: 25,
           skill_points: 17,
@@ -221,7 +221,7 @@ defmodule NonceGeekDAO.World.Loader do
 
   defp parse_initial_events(%{initial_events: initial_events}) do
     Enum.map(initial_events, fn initial_event ->
-      %NonceGeekDAO.Character.InitialEvent{
+      %Kantele.Character.InitialEvent{
         data: initial_event.data,
         delay: initial_event.delay,
         topic: initial_event.topic
@@ -249,8 +249,8 @@ defmodule NonceGeekDAO.World.Loader do
       name: item_data.name,
       description: item_data.description,
       verbs: item_verbs,
-      callback_module: NonceGeekDAO.World.Item,
-      meta: %NonceGeekDAO.World.Item.Meta{}
+      callback_module: Kantele.World.Item,
+      meta: %Kantele.World.Item.Meta{}
     }
 
     {key, item}
@@ -447,7 +447,7 @@ defmodule NonceGeekDAO.World.Loader do
   Convert zones into a world struct
   """
   def parse_world(zones) do
-    world = %NonceGeekDAO.World{
+    world = %Kantele.World{
       zones: zones
     }
 
@@ -486,11 +486,11 @@ defmodule NonceGeekDAO.World.Loader do
   end
 
   def generate_minimap(zone) do
-    mini_map = %NonceGeekDAO.MiniMap{id: zone.id}
+    mini_map = %Kantele.MiniMap{id: zone.id}
 
     cells =
       Enum.map(zone.rooms, fn room ->
-        %NonceGeekDAO.MiniMap.Cell{
+        %Kantele.MiniMap.Cell{
           id: room.id,
           map_color: room.map_color,
           map_icon: room.map_icon,
@@ -498,7 +498,7 @@ defmodule NonceGeekDAO.World.Loader do
           x: room.x,
           y: room.y,
           z: room.z,
-          connections: %NonceGeekDAO.MiniMap.Connections{
+          connections: %Kantele.MiniMap.Connections{
             north: exit_id(room.exits, :north),
             south: exit_id(room.exits, :south),
             east: exit_id(room.exits, :east),

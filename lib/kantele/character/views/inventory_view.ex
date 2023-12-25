@@ -1,9 +1,9 @@
-defmodule NonceGeekDAO.Character.InventoryView do
+defmodule Kantele.Character.InventoryView do
   use Kalevala.Character.View
 
   alias Kalevala.Character.Conn.Event
   alias Kalevala.Character.Conn.EventText
-  alias NonceGeekDAO.Character.ItemView
+  alias Kantele.Character.ItemView
 
   def render("list.event", %{item_instances: item_instances}) do
     %Event{

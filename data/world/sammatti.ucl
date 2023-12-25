@@ -1,10 +1,10 @@
-zones "noncegeek" {
-  name = "NonceGeekDAO"
+zones "yuanzhengong0x01" {
+  name = "yuanzhengong0x01"
 }
 
-rooms "noncegeek_center" {
-  name = "NonceGeekDAO Center"
-  description = "You are in the NonceGeekDAO Center."
+rooms "lobby" {
+  name = "Lobby"
+  description = "你站在元真宫的前庭。"
 
   map_icon = "wooden-sign"
 
@@ -14,34 +14,28 @@ rooms "noncegeek_center" {
 
   features = [
     {
-      keyword = "web3_move_ex"
-      short = "To the east is web3_move_ex, a MOVE sdk coding by elixir."
-      long = "To the east is web3_move_ex, a MOVE sdk coding by elixir."
-    },
-    {
-      keyword = "tai_shang_micro_faas_system"
-      short = "To the west is tai_shang_micro_faas_system, Function as a Service based on Web3."
-      long = "To the west is tai_shang_micro_faas_system, Function as a Service based on Web3."
+      keyword = "食物花园"
+      short = "To the west is 食物花园, 植物自由生长."
+      long = "To the west is 食物花园, 植物自由生长."
     }
   ]
 }
 
-room_exits "noncegeek_center" {
-  room_id = rooms.noncegeek_center.id
+room_exits "lobby" {
+  room_id = rooms.lobby.id
 
-  north = rooms.move_did.id
-  east = rooms.web3_move_ex.id
-  west = rooms.tai_shang_micro_faas_system.id
+  north = rooms.gallery.id
+  west = rooms.food_garden.id
 
   south = "kissa-jarvi.rooms.gates.id"
 }
 
-room_characters "noncegeek_center" {
-  room_id = rooms.noncegeek_center.id
+room_characters "lobby" {
+  room_id = rooms.lobby.id
 
   characters = [
     {
-      id = characters.town_crier.id
+      id = characters.a_small_dog.id
     },
     {
       id = characters.wandering_villager.id
@@ -49,8 +43,8 @@ room_characters "noncegeek_center" {
   ]
 }
 
-room_items "noncegeek_center" {
-  room_id = rooms.noncegeek_center.id
+room_items "lobby" {
+  room_id = rooms.lobby.id
 
   items = [
     {
@@ -58,16 +52,13 @@ room_items "noncegeek_center" {
     },
     {
       id = global.items.potion.id
-    },
-    {
-      id = global.items.airdropper.id
     }
   ]
 }
 
-rooms "move_did" {
-  name = "MoveDID"
-  description = "DID Solution In Move."
+rooms "gallery" {
+  name = "gallery"
+  description = "一条长廊，可以丢飞盘🥏。"
 
   map_icon = "shop"
 
@@ -76,104 +67,74 @@ rooms "move_did" {
   z = 0
 }
 
-room_exits "move_did" {
-  room_id = rooms.move_did.id
-  south = rooms.noncegeek_center.id
+room_exits "gallery" {
+  room_id = rooms.gallery.id
+
+  north = rooms.lawn.id
+  south = rooms.lobby.id
+  west = rooms.small-tea-room.id
 }
 
-rooms "web3_move_ex" {
-  name = "web3_move_ex"
-  description = "MOVE sdk coding by elixir."
+rooms "lawn" {
+  name = "草坪"
+  description = "一块草坪，里面似乎蕴藏着什么未知的东西。"
 
   map_color = "yellow"
-  map_icon = "stein"
+  map_icon = "coins"
 
-  x = 1
+  x = 0
+  y = 2
+  z = 0
+}
+
+room_exits "lawn" {
+  room_id = rooms.lawn.id
+  west= rooms.empty-1.id
+  south = rooms.gallery.id
+}
+
+rooms "living_room" {
+  name = "前厅"
+  description = "前厅，可以聊聊天"
+
+  map_color = "yellow"
+  map_icon = "hammer"
+
+  x = -2
   y = 0
   z = 0
 }
 
-rooms "web3_mud_ex" {
-  name = "web3_mud_ex"
-  description = "Web3MudEx is a MUD Framework based on Web3 & AIGC, written in Elixir, forked from Kalevala."
+room_exits "living_room" {
+  room_id = rooms.living_room.id
+  west = rooms.kitchen.id
+  east = rooms.food_garden.id
+  north = rooms.studio-room.id
+}
 
-  map_color = "green"
-  map_icon = "pine-tree"
+rooms "kitchen" {
+  name = "厨房"
+  description = "厨房，做点吃的？"
 
-  x = 2
+  map_color = "yellow"
+  map_icon = "hammer"
+
+  x = -3
   y = 0
   z = 0
 }
 
-room_exits "web3_move_ex" {
-  room_id = rooms.web3_move_ex.id
+room_exits "kitchen" {
+  room_id = rooms.kitchen.id
 
-  west = rooms.noncegeek_center.id
-  north = rooms.well.id
-  east = rooms.web3_mud_ex.id
-  up = rooms.web3_move_ex_upstairs.id
+  east = rooms.living_room.id
 }
 
-room_exits "web3_mud_ex" {
-  room_id = rooms.web3_mud_ex.id
 
-  west = rooms.web3_move_ex.id
-}
 
-room_characters "web3_move_ex" {
-  room_id = rooms.web3_move_ex.id
-
-  characters = [
-    {
-      id = characters.villager.id
-      name = "Tapio"
-    }
-  ]
-}
-
-rooms "web3_move_ex_upstairs" {
-  name = "Lohikäärme Upstairs"
-  description = "The upstairs of the small web3_move_ex. A small staircase leads downstairs."
-
-  x = 1
-  y = 0
-  z = 1
-}
-
-room_exits "web3_move_ex_upstairs" {
-  room_id = rooms.web3_move_ex_upstairs.id
-
-  down = rooms.web3_move_ex.id
-}
-
-rooms "well" {
-  name = "move_e2e_test_tool"
-  description = "E2E test tool for Move Language."
-
-  map_color = "green"
-  map_icon = "well"
-
-  x = 1
-  y = 1
-  z = 0
-
-  features = [
-    {
-      keyword = "well"
-      short = "A well with a bucket dangling is off to the side of the road in this part of town."
-      long = "A well with a bucket dangling is off to the side of the road in this part of town."
-    }
-  ]
-}
-
-room_exits "well" {
-  room_id = rooms.well.id
-  south = rooms.web3_move_ex.id
-}
-
-rooms "tai_shang_micro_faas_system" {
-  name = "tai_shang_micro_faas_system"
-  description = "Function as a Service based on Web3."
+rooms "food_garden" {
+  name = "食物花园"
+  description = "一个小型的食物花园。"
 
   map_color = "yellow"
   map_icon = "hammer"
@@ -183,14 +144,15 @@ rooms "tai_shang_micro_faas_system" {
   z = 0
 }
 
-room_exits "tai_shang_micro_faas_system" {
-  room_id = rooms.tai_shang_micro_faas_system.id
+room_exits "food_garden" {
+  room_id = rooms.food_garden.id
 
-  east = rooms.noncegeek_center.id
+  east = rooms.lobby.id
+  west = rooms.living_room.id
 }
 
-room_characters "tai_shang_micro_faas_system" {
-  room_id = rooms.tai_shang_micro_faas_system.id
+room_characters "food_garden" {
+  room_id = rooms.food_garden.id
 
   characters = [
     {
@@ -200,9 +162,131 @@ room_characters "tai_shang_micro_faas_system" {
   ]
 }
 
-characters "town_crier" {
-  name = "Leeduckgo"
-  description = "Cool-oriented programming."
+rooms "small-tea-room" {
+  name = "小茶室"
+  description = "喝喝茶。"
+
+  x = -1
+  y = 1
+  z = 0
+}
+
+room_exits "small-tea-room" {
+  room_id = rooms.small-tea-room.id
+  west = rooms.studio-room.id
+  east = rooms.gallery.id
+}
+
+
+
+rooms "empty-2" {
+  name = "一块空地"
+  description = "一块空地，可以上到二层。"
+
+  x = -2
+  y = 2
+  z = 0
+}
+
+room_exits "empty-2" {
+  room_id = rooms.empty-2.id
+
+  north = rooms.next-door.id
+  south = rooms.studio-room.id
+  west = rooms.trails.id
+  east = rooms.empty-1.id
+}
+
+rooms "empty-1" {
+  name = "一块空地"
+  description = "一块空地。"
+
+  x = -1
+  y = 2
+  z = 0
+}
+
+room_exits "empty-1" {
+  room_id = rooms.empty-1.id
+  west = rooms.empty-2.id
+  east = rooms.lawn.id
+}
+
+rooms "studio-room" {
+  name = "超级厅堂"
+  description = "超级厅堂, yes！"
+
+  map_icon = "family-house"
+  map_color = "yellow"
+
+  x = -2
+  y = 1
+  z = 0
+}
+
+room_exits "studio-room" {
+  room_id = rooms.studio-room.id
+  south = rooms.living_room.id
+  east = rooms.small-tea-room.id
+  north = rooms.empty-2.id
+}
+
+rooms "trails" {
+  name = "小径"
+  description = "一条通往龙潭的小径。"
+
+  map_icon = "family-house"
+  map_color = "yellow"
+
+  x = -3
+  y = 2
+  z = 0
+}
+
+room_exits "trails" {
+  room_id = rooms.trails.id
+  west = rooms.pool.id
+  east = rooms.empty-2.id
+}
+
+rooms "pool" {
+  name = "龙潭"
+  description = "龙潭，里面栖居着未知的生物"
+
+  map_icon = "family-house"
+  map_color = "yellow"
+
+  x = -3
+  y = 2
+  z = 0
+}
+
+room_exits "pool" {
+  room_id = rooms.pool.id
+  west = rooms.trails.id
+}
+
+rooms "next-door" {
+  name = "隔壁茶厂"
+  description = "通过小洞偷偷流到隔壁茶厂。"
+
+  map_icon = "triple-gate"
+  map_color = "yellow"
+
+  x = -2
+  y = 3
+  z = 0
+}
+
+room_exits "next-door" {
+  room_id = rooms.next-door.id
+
+  south = rooms.empty-2.id
+}
+
+characters "a_small_dog" {
+  name = "A small dog"
+  description = "A small doge with a loud voice."
 
   initial_events = [
     {
@@ -210,24 +294,24 @@ characters "town_crier" {
       delay = 3000
       data = {
         id = "looking"
-        message = "looks around for someone to talk to."
+        message = "looks around for someone to lick with."
       }
     }
   ]
 
-  brain = brains.town_crier
+  brain = brains.a_small_dog
 }
 
 characters "villager" {
-  name = "Villager"
-  description = "A villager of noncegeek."
+  name = "园丁"
+  description = "元真宫里的园丁。"
 
   brain = brains.villager
 }
 
 characters "wandering_villager" {
-  name = "Villager"
-  description = "A villager of noncegeek."
+  name = "闲逛的人"
+  description = "一个在元真宫闲逛的人。"
 
   initial_events = [
     {

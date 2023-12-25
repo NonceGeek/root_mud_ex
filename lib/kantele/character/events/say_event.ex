@@ -1,9 +1,9 @@
-defmodule NonceGeekDAO.Character.SayEvent do
+defmodule Kantele.Character.SayEvent do
   use Kalevala.Character.Event
 
-  alias NonceGeekDAO.Character.CommandView
-  alias NonceGeekDAO.Character.SayAction
-  alias NonceGeekDAO.Character.SayView
+  alias Kantele.Character.CommandView
+  alias Kantele.Character.SayAction
+  alias Kantele.Character.SayView
 
   def interested?(event) do
     event.data.type == "speech" && match?("rooms:" <> _, event.data.channel_name)

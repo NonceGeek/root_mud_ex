@@ -3,7 +3,7 @@ defmodule Web.LayoutView do
 
   import Web.Gettext, only: [gettext: 1]
 
-  alias Web3MUDEx.Users
+  alias ExVenture.Users
 
   def admin?(user), do: Users.admin?(user)
 

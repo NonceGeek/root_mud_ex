@@ -1,7 +1,7 @@
-defmodule NonceGeekDAO.Character.InfoCommand do
+defmodule Kantele.Character.InfoCommand do
   use Kalevala.Character.Command
 
-  alias NonceGeekDAO.Character.InfoView
+  alias Kantele.Character.InfoView
 
   def run(conn, _params) do
     render(conn, InfoView, "display")

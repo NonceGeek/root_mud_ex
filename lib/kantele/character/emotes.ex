@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.Emote do
+defmodule Kantele.Character.Emote do
   @moduledoc """
   A static emote that players can use via a command
   """
@@ -6,12 +6,12 @@ defmodule NonceGeekDAO.Character.Emote do
   defstruct [:command, :text]
 end
 
-defmodule NonceGeekDAO.Character.Emotes do
+defmodule Kantele.Character.Emotes do
   @moduledoc false
 
   use Kalevala.Cache
 
-  alias NonceGeekDAO.Character.Emote
+  alias Kantele.Character.Emote
 
   @impl true
   def initialize(state) do

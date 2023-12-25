@@ -1,8 +1,8 @@
-defmodule NonceGeekDAO.Character.DelayedEvent do
+defmodule Kantele.Character.DelayedEvent do
   use Kalevala.Character.Event
 
-  alias NonceGeekDAO.Character.CommandController
-  alias NonceGeekDAO.Character.DelayedView
+  alias Kantele.Character.CommandController
+  alias Kantele.Character.DelayedView
 
   def run(conn, %{data: %{"command" => command}}) do
     conn

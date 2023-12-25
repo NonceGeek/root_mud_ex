@@ -1,6 +1,6 @@
-defmodule NonceGeekDAO.Config do
+defmodule Kantele.Config do
   @moduledoc """
-  Game configuration for NonceGeekDAO
+  Game configuration for Kantele
   """
 
   use GenServer

@@ -1,7 +1,7 @@
 defmodule Web.Admin.UserController do
   use Web, :controller
 
-  alias Web3MUDEx.Users
+  alias ExVenture.Users
 
   plug(Web.Plugs.ActiveTab, tab: :users)
   plug(Web.Plugs.FetchPage when action in [:index])

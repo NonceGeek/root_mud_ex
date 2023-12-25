@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.DelayedCommand do
+defmodule Kantele.Character.DelayedCommand do
   use Kalevala.Character.Command
 
   def run(conn, %{"command" => command}) do

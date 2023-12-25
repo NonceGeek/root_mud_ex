@@ -1,12 +1,12 @@
-defmodule NonceGeekDAO.World do
+defmodule Kantele.World do
   @moduledoc """
   GenServer to load and boot the world
   """
 
   use Supervisor
 
-  alias NonceGeekDAO.World.Loader
-  alias NonceGeekDAO.World.ZoneCache
+  alias Kantele.World.Loader
+  alias Kantele.World.ZoneCache
 
   defstruct characters: [], items: [], rooms: [], zones: []
 
@@ -34,14 +34,14 @@ defmodule NonceGeekDAO.World do
 
   @impl true
   def init(_opts) do
-    config = Application.get_env(:NonceGeekDAO, :world, [])
+    config = Application.get_env(:kantele, :world, [])
     kickoff = Keyword.get(config, :kickoff, true)
 
     children = [
       {ZoneCache, [id: ZoneCache, name: ZoneCache]},
-      {NonceGeekDAO.World.Items, [id: NonceGeekDAO.World.Items, name: NonceGeekDAO.World.Items]},
-      {Kalevala.World, [name: NonceGeekDAO.World]},
-      {NonceGeekDAO.World.Kickoff, [name: NonceGeekDAO.World.Kickoff, start: kickoff]}
+      {Kantele.World.Items, [id: Kantele.World.Items, name: Kantele.World.Items]},
+      {Kalevala.World, [name: Kantele.World]},
+      {Kantele.World.Kickoff, [name: Kantele.World.Kickoff, start: kickoff]}
     ]
 
     Supervisor.init(children, strategy: :one_for_one)

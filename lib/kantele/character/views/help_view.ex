@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.HelpView do
+defmodule Kantele.Character.HelpView do
   use Kalevala.Character.View
 
   def render("index", _assigns) do

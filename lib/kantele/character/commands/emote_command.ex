@@ -1,9 +1,9 @@
-defmodule NonceGeekDAO.Character.EmoteCommand do
+defmodule Kantele.Character.EmoteCommand do
   use Kalevala.Character.Command, dynamic: true
 
-  alias NonceGeekDAO.Character.Emotes
-  alias NonceGeekDAO.Character.EmoteAction
-  alias NonceGeekDAO.Character.EmoteView
+  alias Kantele.Character.Emotes
+  alias Kantele.Character.EmoteAction
+  alias Kantele.Character.EmoteView
 
   @impl true
   def parse(text, _opts) do

@@ -1,7 +1,7 @@
-defmodule NonceGeekDAO.Character.SayCommand do
+defmodule Kantele.Character.SayCommand do
   use Kalevala.Character.Command
 
-  alias NonceGeekDAO.Character.SayAction
+  alias Kantele.Character.SayAction
 
   def run(conn, %{"at" => _at} = params) do
     conn

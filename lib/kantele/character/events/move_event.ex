@@ -1,10 +1,10 @@
-defmodule NonceGeekDAO.Character.MoveEvent do
+defmodule Kantele.Character.MoveEvent do
   use Kalevala.Character.Event
 
   require Logger
 
-  alias NonceGeekDAO.Character.CommandView
-  alias NonceGeekDAO.Character.MoveView
+  alias Kantele.Character.CommandView
+  alias Kantele.Character.MoveView
 
   def commit(conn, %{data: event}) do
     conn

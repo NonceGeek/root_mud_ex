@@ -1,10 +1,10 @@
-defmodule NonceGeekDAO.World.Items do
+defmodule Kantele.World.Items do
   @moduledoc false
 
   use Kalevala.Cache
 end
 
-defmodule NonceGeekDAO.World.Item do
+defmodule Kantele.World.Item do
   @moduledoc """
   Local callbacks for `Kalevala.World.Item`
   """
@@ -12,7 +12,7 @@ defmodule NonceGeekDAO.World.Item do
   use Kalevala.World.Item
 end
 
-defmodule NonceGeekDAO.World.Item.Meta do
+defmodule Kantele.World.Item.Meta do
   @moduledoc """
   Item metadata, implements `Kalevala.Meta`
   """

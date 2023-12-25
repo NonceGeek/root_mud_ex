@@ -1,5 +1,5 @@
 <div class="sm:mx-auto sm:w-full sm:max-w-md">
-  <%= img_tag("/images/exventure.png", class: "mx-auto h-32 w-auto", alt: "Web3MUDEx Logo") %>
+  <%= img_tag("/images/exventure.png", class: "mx-auto h-32 w-auto", alt: "ExVenture Logo") %>
 
   <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
     Forgot your password?

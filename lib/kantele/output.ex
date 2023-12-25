@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Output.Macros do
+defmodule Kantele.Output.Macros do
   @moduledoc """
   Helper macros for defining semantic colors
   """
@@ -100,14 +100,14 @@ defmodule NonceGeekDAO.Output.Macros do
   end
 end
 
-defmodule NonceGeekDAO.Output.SemanticColors do
+defmodule Kantele.Output.SemanticColors do
   @moduledoc """
   Transform semantic tags into color tags
   """
 
   use Kalevala.Output
 
-  import NonceGeekDAO.Output.Macros, only: [color: 2]
+  import Kantele.Output.Macros, only: [color: 2]
 
   color("character", foreground: "yellow")
   color("exit", foreground: "white")
@@ -124,7 +124,7 @@ defmodule NonceGeekDAO.Output.SemanticColors do
   end
 end
 
-defmodule NonceGeekDAO.Output.AdminTags do
+defmodule Kantele.Output.AdminTags do
   @moduledoc """
   Parse admin specific tags
 
@@ -134,7 +134,7 @@ defmodule NonceGeekDAO.Output.AdminTags do
   use Kalevala.Output
 
   import Kalevala.Character.View.Macro, only: [sigil_i: 2]
-  import NonceGeekDAO.Output.Macros, only: [metadata: 3]
+  import Kantele.Output.Macros, only: [metadata: 3]
 
   @impl true
   def init(opts) do
@@ -165,7 +165,7 @@ defmodule NonceGeekDAO.Output.AdminTags do
   end
 end
 
-defmodule NonceGeekDAO.Output.Tooltips do
+defmodule Kantele.Output.Tooltips do
   @moduledoc """
   Process tags to wrap in a tooltip tag
 
@@ -174,7 +174,7 @@ defmodule NonceGeekDAO.Output.Tooltips do
 
   use Kalevala.Output
 
-  # import NonceGeekDAO.Output.Macros, only: [tooltip: 2]
+  # import Kantele.Output.Macros, only: [tooltip: 2]
 
   @impl true
   def init(opts) do
@@ -191,7 +191,7 @@ defmodule NonceGeekDAO.Output.Tooltips do
   end
 end
 
-defmodule NonceGeekDAO.Output.Commands do
+defmodule Kantele.Output.Commands do
   @moduledoc """
   Wrap tags in command tags to send text by clicking
   """

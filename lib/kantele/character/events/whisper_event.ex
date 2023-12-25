@@ -1,10 +1,10 @@
-defmodule NonceGeekDAO.Character.WhisperEvent do
+defmodule Kantele.Character.WhisperEvent do
   use Kalevala.Character.Event
 
   require Logger
 
-  alias NonceGeekDAO.Character.CommandView
-  alias NonceGeekDAO.Character.WhisperView
+  alias Kantele.Character.CommandView
+  alias Kantele.Character.WhisperView
 
   def interested?(event) do
     event.data.type == "whisper" && match?("rooms:" <> _, event.data.channel_name)

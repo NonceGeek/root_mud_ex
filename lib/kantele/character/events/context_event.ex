@@ -1,10 +1,10 @@
-defmodule NonceGeekDAO.Character.ContextEvent do
+defmodule Kantele.Character.ContextEvent do
   use Kalevala.Character.Event
 
   alias Kalevala.Verb
   alias Kalevala.World.Item
-  alias NonceGeekDAO.Character.ContextView
-  alias NonceGeekDAO.World.Items
+  alias Kantele.Character.ContextView
+  alias Kantele.World.Items
 
   def lookup(conn, %{data: %{"context" => "room", "type" => "item", "id" => id}}) do
     event(conn, "context/lookup", %{type: :item, id: id})

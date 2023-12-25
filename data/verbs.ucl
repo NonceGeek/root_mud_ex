@@ -10,18 +10,6 @@ verbs "drop" {
   }
 }
 
-verbs "contract" {
-  icon = "grab"
-  text = "Contract"
-  send = "contract ${id}"
-
-  conditions = {
-    location = [
-      "inventory/self"
-    ]
-  }
-}
-
 verbs "get" {
   icon = "grab"
   text = "Get"

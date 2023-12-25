@@ -1,10 +1,11 @@
-defmodule Web3MUDEx.Repo.Migrations.CreateCharacters do
+defmodule ExVenture.Repo.Migrations.CreateCharacters do
   use Ecto.Migration
 
   def change do
     create table(:characters) do
       add(:name, :string, null: false)
-
+      add :description, :string
+      add :vitals, :map
       timestamps()
     end
 

@@ -1,4 +1,4 @@
-defmodule Web3MUDEx.Repo.Migrations.CreateStagedChanges do
+defmodule ExVenture.Repo.Migrations.CreateStagedChanges do
   use Ecto.Migration
 
   def change do

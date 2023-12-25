@@ -1,14 +1,14 @@
-defmodule NonceGeekDAO.Communication.BroadcastChannel do
+defmodule Kantele.Communication.BroadcastChannel do
   use Kalevala.Communication.Channel
 end
 
-defmodule NonceGeekDAO.Communication do
+defmodule Kantele.Communication do
   @moduledoc false
 
   use Kalevala.Communication
 
   @impl true
   def initial_channels() do
-    [{"general", NonceGeekDAO.Communication.BroadcastChannel, []}]
+    [{"general", Kantele.Communication.BroadcastChannel, []}]
   end
 end

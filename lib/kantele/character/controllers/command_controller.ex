@@ -1,13 +1,13 @@
-defmodule NonceGeekDAO.Character.CommandController do
+defmodule Kantele.Character.CommandController do
   use Kalevala.Character.Controller
 
   require Logger
 
   alias Kalevala.Output.Tags
-  alias NonceGeekDAO.Character.Commands
-  alias NonceGeekDAO.Character.CommandView
-  alias NonceGeekDAO.Character.Events
-  alias NonceGeekDAO.Character.IncomingEvents
+  alias Kantele.Character.Commands
+  alias Kantele.Character.CommandView
+  alias Kantele.Character.Events
+  alias Kantele.Character.IncomingEvents
 
   @impl true
   def init(conn) do
@@ -46,8 +46,13 @@ defmodule NonceGeekDAO.Character.CommandController do
     IncomingEvents.call(conn, event)
   end
 
+  @doc """
+    event is here.
+  """
   @impl true
-  def event(conn, event), do: Events.call(conn, event)
+  def event(conn, event) do 
+    Events.call(conn, event)
+  end 
 
   @impl true
   def display(conn, event) do

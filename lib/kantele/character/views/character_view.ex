@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.CharacterView do
+defmodule Kantele.Character.CharacterView do
   use Kalevala.Character.View
 
   alias Kalevala.Character.Conn.Event

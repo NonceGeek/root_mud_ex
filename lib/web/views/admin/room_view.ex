@@ -1,7 +1,7 @@
 defmodule Web.Admin.RoomView do
   use Web, :view
 
-  alias Web3MUDEx.Rooms
+  alias ExVenture.Rooms
   alias Web.FormView
   alias Web.PaginationView
 

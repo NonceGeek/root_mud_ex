@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.LookCommand do
+defmodule Kantele.Character.LookCommand do
   use Kalevala.Character.Command
 
   def run(conn, _params) do

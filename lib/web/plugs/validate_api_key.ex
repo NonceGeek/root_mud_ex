@@ -6,7 +6,7 @@ defmodule Web.Plugs.ValidateAPIKey do
   import Plug.Conn
   import Phoenix.Controller
 
-  alias Web3MUDEx.APIKeys
+  alias ExVenture.APIKeys
 
   def init(default), do: default
 

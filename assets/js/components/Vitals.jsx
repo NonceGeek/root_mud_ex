@@ -13,7 +13,6 @@ let Vitals = ({ character, vitals }) => {
 
   const { endurance_points, max_endurance_points } = vitals;
   const { health_points, max_health_points } = vitals;
-  const { sui_addr } = vitals;
   const { skill_points, max_skill_points } = vitals;
 
   const enduranceWidth = (endurance_points / max_endurance_points) * 100;
@@ -24,14 +23,6 @@ let Vitals = ({ character, vitals }) => {
     <div className="flex flex-col">
       <h3 className="text-xl text-gray-200 px-4 pt-4">{character.name}</h3>
       <div className="p-2 w-full">
-        <div className="relative my-2 rounded bg-gray-600">
-          <div className="bg-red-600 rounded absolute inset-0 z-0" style={{ width: `${healthWidth}%` }} />
-          <Tooltip tip={sui_addr} className="w-full left">
-            <span className="relative z-10 block p-2 text-white text-lg text-right">
-              sui_addr(touch to show)
-            </span>
-          </Tooltip>
-        </div>
         <div className="relative my-2 rounded bg-gray-600">
           <div className="bg-red-600 rounded absolute inset-0 z-0" style={{ width: `${healthWidth}%` }} />
           <Tooltip tip="Health Points" className="w-full right">

@@ -1,7 +1,7 @@
 defmodule Web.SessionController do
   use Web, :controller
 
-  alias Web3MUDEx.Users
+  alias ExVenture.Users
 
   def new(conn, _params) do
     conn
@@ -9,6 +9,16 @@ defmodule Web.SessionController do
     |> assign(:changeset, Users.new())
     |> render("new.html")
   end
+
+  def login(conn, %{"address" => address, "sig" => sig}) do
+    with true <- verify_sig?(address, sig),
+      true <- hold_nft?(address, "goosinals") do
+        conn
+    end
+  end
+
+  def verify_sig?(_addr, _sig), do: true
+  def hold_nft?(_addr, _nft_type), do: true
 
   def create(conn, %{"user" => %{"email" => email, "password" => password}}) do
     case Users.validate_login(email, password) do

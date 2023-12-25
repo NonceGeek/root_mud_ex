@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.MoveCommand do
+defmodule Kantele.Character.MoveCommand do
   use Kalevala.Character.Command
 
   def north(conn, _params) do

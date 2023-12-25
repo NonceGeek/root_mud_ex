@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.MapView do
+defmodule Kantele.Character.MapView do
   use Kalevala.Character.View
 
   def render("look", %{room: room, mini_map: mini_map}) do

@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.World.Zone do
+defmodule Kantele.World.Zone do
   @moduledoc """
   Callbacks for a Kalevala zone
   """

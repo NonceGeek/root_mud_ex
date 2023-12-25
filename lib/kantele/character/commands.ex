@@ -1,33 +1,7 @@
-defmodule NonceGeekDAO.Character.Commands do
+defmodule Kantele.Character.Commands do
   @moduledoc false
 
-  use Kalevala.Character.Command.Router, scope: NonceGeekDAO.Character
-
-  module(SuiCommand) do
-    parse("getobj", :get_obj, fn command ->
-      command |> spaces() |> text(:obj_id)
-    end)
-
-    parse("getobjtest", :get_obj_test, fn command ->
-      command |> spaces() |> text(:obj_id)
-    end)
-
-    parse("getobjsbyowner", :get_objs_by_owner, fn command ->
-      command |> spaces() |> text(:addr)
-    end)
-
-    parse("getcontributors", :get_contributors, fn command ->
-      command |> spaces() |> text(:room_name)
-    end)
-
-    parse("airdrop", :airdrop, fn command ->
-      command |> spaces() |> text(:coin_num)
-    end)
-
-    parse("checkroom", :check_room, fn command ->
-      command |> spaces() |> text(:room_name)
-    end)
-  end
+  use Kalevala.Character.Command.Router, scope: Kantele.Character
 
   module(ChannelCommand) do
     parse("general", :general, fn command ->
@@ -63,10 +37,6 @@ defmodule NonceGeekDAO.Character.Commands do
     end)
 
     parse("get", :get, fn command ->
-      command |> spaces() |> text(:item_name)
-    end)
-
-    parse("contract", :get_contract, fn command ->
       command |> spaces() |> text(:item_name)
     end)
   end
@@ -136,6 +106,14 @@ defmodule NonceGeekDAO.Character.Commands do
       |> word(:name)
       |> spaces()
       |> text(:text)
+    end)
+  end
+
+  module(FightCommand) do
+    parse("fight", :run, fn command ->
+      command
+      |> spaces()
+      |> word(:name)
     end)
   end
 

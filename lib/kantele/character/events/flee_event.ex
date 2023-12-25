@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.FleeEvent do
+defmodule Kantele.Character.FleeEvent do
   use Kalevala.Character.Event
 
   def run(conn, %{data: %{exits: exits}}) do

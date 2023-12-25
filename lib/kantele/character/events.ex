@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.Events do
+defmodule Kantele.Character.Events do
   @moduledoc false
 
   use Kalevala.Event.Router
@@ -7,13 +7,14 @@ defmodule NonceGeekDAO.Character.Events do
   alias Kalevala.Event.ItemPickUp
   alias Kalevala.Event.Message
   alias Kalevala.Event.Movement
-  alias NonceGeekDAO.Character.ChannelEvent
-  alias NonceGeekDAO.Character.EmoteEvent
-  alias NonceGeekDAO.Character.SayEvent
-  alias NonceGeekDAO.Character.TellEvent
-  alias NonceGeekDAO.Character.WhisperEvent
+  alias Kantele.Character.ChannelEvent
+  alias Kantele.Character.EmoteEvent
+  alias Kantele.Character.SayEvent
+  alias Kantele.Character.TellEvent
+  alias Kantele.Character.FightEvent
+  alias Kantele.Character.WhisperEvent
 
-  scope(NonceGeekDAO.Character) do
+  scope(Kantele.Character) do
     module(DelayedEvent) do
       event("commands/delayed", :run)
     end
@@ -50,6 +51,12 @@ defmodule NonceGeekDAO.Character.Events do
       event(Message, :echo, interested?: &TellEvent.interested?/1)
     end
 
+    # event should write here.
+    module(FightEvent) do
+      event("fight/send", :broadcast)
+      event(Message, :echo, interested?: &FightEvent.interested?/1)
+    end
+
     module(WhisperEvent) do
       event("whisper/send", :broadcast)
       event(Message, :echo, interested?: &WhisperEvent.interested?/1)
@@ -61,26 +68,26 @@ defmodule NonceGeekDAO.Character.Events do
   end
 end
 
-defmodule NonceGeekDAO.Character.IncomingEvents do
+defmodule Kantele.Character.IncomingEvents do
   @moduledoc false
 
   use Kalevala.Event.Router
 
-  scope(NonceGeekDAO.Character) do
+  scope(Kantele.Character) do
     module(ContextEvent) do
       event("Context.Lookup", :lookup)
     end
   end
 end
 
-defmodule NonceGeekDAO.Character.NonPlayerEvents do
+defmodule Kantele.Character.NonPlayerEvents do
   @moduledoc false
 
   use Kalevala.Event.Router
 
   alias Kalevala.Event.Movement
 
-  scope(NonceGeekDAO.Character) do
+  scope(Kantele.Character) do
     module(FleeEvent) do
       event("room/flee", :run)
     end

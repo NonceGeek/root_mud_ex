@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.RoomChannel do
+defmodule Kantele.RoomChannel do
   use Kalevala.Communication.Channel
 
   @impl true

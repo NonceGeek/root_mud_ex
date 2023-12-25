@@ -1,11 +1,11 @@
-defmodule NonceGeekDAO.Character.EmoteAction do
+defmodule Kantele.Character.EmoteAction do
   @moduledoc """
   Action to emote in a channel (e.g. a room)
   """
 
   use Kalevala.Character.Action
 
-  alias NonceGeekDAO.Character.EmoteView
+  alias Kantele.Character.EmoteView
 
   @impl true
   def run(conn, params) do

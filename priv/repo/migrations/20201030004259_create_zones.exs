@@ -1,4 +1,4 @@
-defmodule Web3MUDEx.Repo.Migrations.CreateZones do
+defmodule ExVenture.Repo.Migrations.CreateZones do
   use Ecto.Migration
 
   def change do

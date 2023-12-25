@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.LoginView do
+defmodule Kantele.Character.LoginView do
   use Kalevala.Character.View
 
   alias Kalevala.Character.Conn.EventText
@@ -79,7 +79,7 @@ defmodule NonceGeekDAO.Character.LoginView do
         }
       },
       text: [
-        ~s(Welcome to the world of {color foreground="256:39"}NonceGeekDAO{/color}, {color foreground="white"}),
+        ~s(Welcome to the world of {color foreground="256:39"}元真宫{/color}, {color foreground="white"}),
         character.name,
         ~s({/color}.\n)
       ]

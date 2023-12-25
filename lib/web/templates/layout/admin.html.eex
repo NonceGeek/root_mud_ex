@@ -4,10 +4,10 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title><%= gettext("Web3MUDEx") %></title>
+    <title><%= gettext("ExVenture") %></title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
 
-    <meta property="og:site_name" content="<%= gettext("Web3MUDEx") %>" />
+    <meta property="og:site_name" content="<%= gettext("ExVenture") %>" />
 
     <%= if Map.has_key?(assigns, :open_graph_title) do %>
       <meta property="og:title" content="<%= @open_graph_title %>" />
@@ -28,7 +28,7 @@
       <div class="w-56 flex flex-row items-center">
         <%= link(to: Routes.admin_dashboard_path(@conn, :index), class: "flex-1 font-bold") do %>
           <%= img_tag(Routes.static_path(@conn, "/images/exventure.png"), class: "h-8 inline-block") %>
-          <span class="ml-1 inline-block text-purple-900">Web3MUDEx</span>
+          <span class="ml-1 inline-block text-purple-900">ExVenture</span>
         <% end %>
       </div>
 

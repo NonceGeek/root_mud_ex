@@ -1,7 +1,7 @@
-defmodule NonceGeekDAO.Character.EmoteView do
+defmodule Kantele.Character.EmoteView do
   use Kalevala.Character.View
 
-  alias NonceGeekDAO.Character.CharacterView
+  alias Kantele.Character.CharacterView
 
   def render("echo", %{character: character, text: text}) do
     ~i({color foreground="white"}#{character.name}{/color} #{text}\n)

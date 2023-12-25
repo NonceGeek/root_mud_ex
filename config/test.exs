@@ -3,21 +3,21 @@ use Mix.Config
 #
 # If you're looking to update variables, you probably want to:
 # - Edit `.env.test`
-# - Add to `Web3MUDEx.Config` for loading through Vapor
+# - Add to `ExVenture.Config` for loading through Vapor
 #
 
 # Configure your database
-config :web3_mud_ex, Web3MUDEx.Repo, pool: Ecto.Adapters.SQL.Sandbox
+config :ex_venture, ExVenture.Repo, pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :web3_mud_ex, Web.Endpoint,
+config :ex_venture, Web.Endpoint,
   http: [port: 4002],
   server: false
 
-config :web3_mud_ex, Web3MUDEx.Mailer, adapter: Bamboo.TestAdapter
+config :ex_venture, ExVenture.Mailer, adapter: Bamboo.TestAdapter
 
-config :web3_mud_ex, :listener, start: false
+config :ex_venture, :listener, start: false
 
 # Print only warnings and errors during test
 config :logger, level: :warn

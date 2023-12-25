@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.ReplyView do
+defmodule Kantele.Character.ReplyView do
   use Kalevala.Character.View
 
   def render("missing-reply-to", _assigns) do

@@ -1,7 +1,7 @@
-defmodule NonceGeekDAO.Character.WhoView do
+defmodule Kantele.Character.WhoView do
   use Kalevala.Character.View
 
-  alias NonceGeekDAO.Character.CharacterView
+  alias Kantele.Character.CharacterView
 
   def render("list", %{characters: characters}) do
     ~E"""

@@ -1,11 +1,11 @@
 {:ok, _api_token} =
-  Web3MUDEx.APIKeys.create(%{
+  ExVenture.APIKeys.create(%{
     token: "6e8d83d9-a028-4eb7-bc7b-9b32bac697b6",
     is_active: true
   })
 
 {:ok, _user} =
-  Web3MUDEx.Users.create(%{
+  ExVenture.Users.create(%{
     username: "user",
     email: "user@example.com",
     password: "password",
@@ -13,7 +13,7 @@
   })
 
 {:ok, admin} =
-  Web3MUDEx.Users.create(%{
+  ExVenture.Users.create(%{
     username: "admin",
     email: "admin@example.com",
     password: "password",
@@ -23,15 +23,15 @@
 {:ok, _admin} =
   admin
   |> Ecto.Changeset.change(%{role: "admin"})
-  |> Web3MUDEx.Repo.update()
+  |> ExVenture.Repo.update()
 
 #
 # The World
 #
 
 defmodule Seeds do
-  alias Web3MUDEx.Rooms
-  alias Web3MUDEx.Zones
+  alias ExVenture.Rooms
+  alias ExVenture.Zones
 
   def create_zone(%{seed?: false}), do: :ok
 
@@ -63,11 +63,11 @@ defmodule Seeds do
         z: params.z
       })
 
-    {:ok, _room} = Web3MUDEx.Rooms.publish(room)
+    {:ok, _room} = ExVenture.Rooms.publish(room)
   end
 end
 
-world = NonceGeekDAO.World.Loader.load()
+world = Kantele.World.Loader.load()
 
 Enum.each(world.zones, fn zone ->
   Seeds.create_zone(zone)

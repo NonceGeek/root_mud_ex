@@ -1,4 +1,4 @@
-defmodule NonceGeekDAO.Character.WanderEvent do
+defmodule Kantele.Character.WanderEvent do
   use Kalevala.Character.Event
 
   def run(conn, %{data: %{exits: exits}}) do
