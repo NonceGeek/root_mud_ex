@@ -69,7 +69,8 @@ defmodule ExVenture.MixProject do
 
       # wallets
       # {:eth_wallet, "~> 0.1.0"}
-      {:eth, "~> 0.6.5"}
+      {:eth, "~> 0.6.5"},
+      {:toml, "~> 0.6.2", override: true}
     ]
   end
 
