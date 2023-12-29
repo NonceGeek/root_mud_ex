@@ -53,7 +53,7 @@ defmodule ExVenture.MixProject do
       {:jason, "~> 1.0"},
       {:kalevala, "~> 0.1"},
       {:logster, "~> 1.0"},
-      {:phoenix, "~> 1.5"},
+      {:phoenix, "1.5.12", override: true},
       {:phoenix_ecto, "~> 4.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
