@@ -67,9 +67,10 @@ defmodule ExVenture.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:vapor, "~> 0.10.0"},
 
+      {:tesla, "~> 1.4"},
       # wallets
-      # {:eth_wallet, "~> 0.1.0"}
-      {:eth, "~> 0.6.5"},
+      # {:eth_wallet, "~> 0.1.0"},
+      # {:eth, "~> 0.6.5"},
       {:toml, "~> 0.6.2", override: true}
     ]
   end
